@@ -144,19 +144,21 @@
   \end{frame}
   \begin{frame}{Example problem}
     \begin{block}{Problem description}
-      Write a program that multiplies pairs of integers
+      Write a program that multiplies pairs of integers.
     \end{block}
     \vspace{10pt}
     \begin{block}{Input description}
-      Input starts with one line containing an integer $T$, where $1\leq T \leq 100$, denoting the number of test cases.
-      Then $T$ lines follow, each containing a test case.
-      Each test case consists of two integers $A,B$, where $-10^{6} \leq A,B \leq 10^{6}$, separated by a single space.
+      The input consists of:
+      \begin{itemize}
+        \item One line with an integer $t$ ($1\leq t\leq 100$), the number of test cases.
+        \item $t$ lines, each with two integers $a$ and $b$ ($|a|,|b| \leq 10^6$), the numbers to multiply.
+      \end{itemize}
     \end{block}
 
     \vspace{10pt}
 
     \begin{block}{Output description}
-      For each test case, output one line containing the value of $A\times B$.
+      For each test case, output the value of $a\times b$.
     \end{block}
   \end{frame}
   \begin{frame}{Example problem}
@@ -188,13 +190,13 @@
       \end{tabular}
     \end{center}
   \end{frame}
-  \begin{frame}[containsverbatim]{Solution in c++}
+  \begin{frame}[containsverbatim]{Solution in C++}
     \inputminted{c++}{code/session-1/c++/example-wrong.cpp}
   \end{frame}
-  \begin{frame}[containsverbatim]{Solution in java}
+  \begin{frame}[containsverbatim]{Solution in Java}
     \inputminted{java}{code/session-1/java/example-wrong.java}
   \end{frame}
-  \begin{frame}[containsverbatim]{Solution in kotlin and Python}
+  \begin{frame}[containsverbatim]{Solution in Kotlin and Python}
     \inputminted{kotlin}{code/session-1/kotlin/example-wrong.kt}
     \inputminted{python}{code/session-1/python/example.py}
   \end{frame}
@@ -203,7 +205,7 @@
     \begin{itemize}
       \item During the contest you submit to a contest control system
       \begin{itemize}
-        \item Usually DOMJudge, but sometimes Kattis or PC\^ 2
+        \item Usually DOMJudge, but sometimes Kattis or PC\textasciicircum2
       \end{itemize}
       \item Submit solutions
       \item Ask questions about the problems or programming environment
@@ -242,20 +244,20 @@
   \end{frame}
   \begin{frame}{Why did the 3 solutions fail?}
     \begin{itemize}
-      \item <1-> Lets check the input again: $-10^{6} \leq A,B \leq 10^{6}$
-      \item <2-> Worst case scenario: $A=10^6$ and $B=10^6$ giving  $A \times B = 10^{12}$
+      \item <1-> Lets check the input again: $|a|,|b| \leq 10^6$
+      \item <2-> Worst case scenario: $a=10^6$ and $b=10^6$ giving  $a \times b = 10^{12}$
       \item <3-> Does $10^{12}$ fit in a 32-bit \texttt{int}?
       \item <4-> $\log_2 10^{12} \approx 40$, so \textbf{NO}, 40 bits don't fit in an \texttt{int}
       \item <5-> Use \texttt{long (long)} when possible, except in Python
     \end{itemize}
   \end{frame}
-  \begin{frame}[containsverbatim]{Solution in c++}
+  \begin{frame}[containsverbatim]{Solution in C++}
     \inputminted{c++}{code/session-1/c++/example.cpp}
   \end{frame}
-  \begin{frame}[containsverbatim]{Solution in java}
+  \begin{frame}[containsverbatim]{Solution in Java}
     \inputminted{java}{code/session-1/java/example.java}
   \end{frame}
-  \begin{frame}[containsverbatim]{Solution in kotlin}
+  \begin{frame}[containsverbatim]{Solution in Kotlin}
     \inputminted{kotlin}{code/session-1/kotlin/example.kt}
   \end{frame}
   \begin{frame}{All solutions correct}
@@ -271,7 +273,8 @@
                                       \item Slower algorithms can be accepted
       \end{itemize}
       \item Low limit signifies fast algorithms, usually the use of formulas
-      \item You can use the time limit to check your code on your local machine\\ \texttt{\$ time myjava ProblemA}
+      \item You can use the time limit to check your code on your local machine\\
+        \texttt{\$ time myjava ProblemA < worst-case.in}
     \end{itemize}
   \end{frame}
   \begin{frame}{About input size\footnote[1]{https://gcpc.nwerc.eu/primer.pdf}}
@@ -297,7 +300,7 @@
   \begin{frame}{An other problem}
     \begin{itemize}
       \item Source BAPC Preliminaries 2022
-      \item Problem name: Fastest Function
+      \item Problem name: Fastestest Function
       \item Time limit: 1s
     \end{itemize}
     Original problem written by the BAPC 2022 jury and licensed under \doclicenseLongNameRef.
@@ -305,7 +308,7 @@
     \doclicenseImage
 
   \end{frame}
-  \begin{frame}{Problem: Fastest Function}
+  \begin{frame}{Problem: Fastestest Function}
     You are working as a software developer for the Bug Acquisition Programming Company.
     They developed a specific piece of software called Program C that they sell to their clients.
     For the past weeks, you have been working on optimising a specific function \texttt{foo} in the main code path in Program C.
@@ -315,7 +318,7 @@
     You can run this on the version before your change and after your change.
     However, you think it looks a lot cooler if you can just tell your boss how much faster you have made        \texttt{foo} itself.
   \end{frame}
-  \begin{frame}{Problem: Fastest Function: Input and Output}
+  \begin{frame}{Problem: Fastestest Function: Input and Output}
     \textbf{Input}
 
     The input consists of:
@@ -331,7 +334,7 @@
 
     Your answer should have an absolute or relative error of at most $10^{-6}$.
   \end{frame}
-  \begin{frame}{Problem: Fastest Function: Samples}
+  \begin{frame}{Problem: Fastestest Function: Samples}
     \begin{tabular}{|l|l|}
       \hline
       \textbf{Sample Input 1} & \textbf{Sample Output 1} \\
@@ -341,7 +344,7 @@
     \end{tabular}
 
     So \texttt{foo} first took $75\%$ of the total running time, after optimization only $50\%$ of the running time.
-    The improvement is $3\times$ as fast.
+    \texttt{foo} is now $3\times$ faster than before.
 
 
     \begin{tabular}{|l|l|}
@@ -361,47 +364,47 @@
       \hline
     \end{tabular}
   \end{frame}
-  \begin{frame}{Problem: Fastest Function: Observations}
+  \begin{frame}{Problem: Fastestest Function: Observations}
     \begin{itemize}
-      \item We receive the result of the following equation:\\$x=\frac{a_x}{b+a_x}$ and $y=\frac{a_y}{b+a_y}$\\ where $a_x$ is the time spend on \texttt{foo} for $x$ and $b$ is the other runtime of the program.
-      \item The factor we are looking for is calculated by $\frac{a_x}{a_y}$
-      \item Rewrite the two equations to $a_x$ and $b_x$\\$x=\frac{a_x}{b+a_x} \equiv bx+a_{x}x = a_x \equiv bx = a_x - a_{x}x \equiv bx = a_x(1-x) \equiv a_x = \frac{bx}{1-x}$\\ Resulting in $a_x=\frac{bx}{1-x}$ and $a_y=\frac{by}{1-y}$.
+      \item We receive the result of the following equations:\\$x=\frac{a_x}{b+a_x}$ and $y=\frac{a_y}{b+a_y}$\\ where $a_x$ is the time spent on \texttt{foo} for $x$ and $b$ is the remaining runtime of the program.
+      \item The factor we are looking for is calculated by $\frac{a_x}{a_y}$.
+      \item Rewrite the two equations to $a_x$ and $b_x$:\\$x=\frac{a_x}{b+a_x} \equiv bx+a_{x}x = a_x \equiv bx = a_x - a_{x}x \equiv bx = a_x(1-x) \equiv a_x = \frac{bx}{1-x}$\\ Resulting in $a_x=\frac{bx}{1-x}$ and $a_y=\frac{by}{1-y}$.
       \item filling the factor formula:\\ $\frac{a_x}{a_y}= a_{x}a_{y}^{-1} = \frac{bx}{1-x}\cdot\frac{1-y}{by} = \frac{bx(1-y)}{(1-x)by} \equiv \frac{x(1-y)}{y(1-x)}$.
       \item Calculate the factor by the formula, resulting in $\mathcal{O}(1)$ solution.
     \end{itemize}
   \end{frame}
-  \begin{frame}[containsverbatim]{Solution in c++}
+  \begin{frame}[containsverbatim]{Solution in C++}
     \inputminted{c++}{code/session-1/c++/dapc-f.cpp}
   \end{frame}
-  \begin{frame}[containsverbatim]{Solution in java}
+  \begin{frame}[containsverbatim]{Solution in Java}
     \inputminted{java}{code/session-1/java/dapc-f.java}
   \end{frame}
-  \begin{frame}[containsverbatim]{Solution in kotlin and Python}
+  \begin{frame}[containsverbatim]{Solution in Kotlin and Python}
     \inputminted{kotlin}{code/session-1/kotlin/dapc-f.kt}
     \inputminted{python}{code/session-1/python/dapc-f.py}
   \end{frame}
-  \begin{frame}{Practicing between sessions}
+  \begin{frame}{Practising between sessions}
     \begin{itemize}
-      \item All problems from BAPC 2022 and DAPC 2022 are available at <Insert URL Training DJ>, self register a team.
+      \item All problems from DAPC 2022 and BAPC 2022 are available at \texttt{<Insert URL Training DJ>}, self-register a team.
       \item Next three sessions have their own contest
-      \item All sessions contain similar themed problems\\ \begin{tabular}{ll}
+      \item All sessions contain similar-themed problems\\ \begin{tabular}{ll}
                                                              \hline
                                                              Session 2 & Ad-hoc and Math solutions                                     \\
                                                              Session 3 & Sort and Search                                               \\
                                                              Session 4 & Interactive Problems, Dynamic programming, Divide and Conquer \\
                                                              \hline
       \end{tabular}
-      \item Problems discussed during the session will be availabe, e.g. Fastest Function is in Session 2.
+      \item Problems discussed during the session will be available, e.g., Fastestest Function is in Session 2.
     \end{itemize}
   \end{frame}
   \section{Meet and Greet}
   \begin{frame}{Looking for team?}
     If you are looking for a team, please raise your hand.
-    If you want you can give an introduction in the front, like experience and programming languages known.\\
-    Please don't forget to register at wisv.ch/dapc.\\\\
+    If you want, you can give an introduction in the front, like experience and programming languages known.\\
+    Please don't forget to register at \texttt{wisv.ch/dapc}.\\\\
     Next session is on <Insert date and location>.\\
 
-    <url to practice domjudge>
+    \texttt{<url to practice domjudge>}
   \end{frame}
 
 \end{document}

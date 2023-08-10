@@ -2,12 +2,12 @@
 using namespace std;
 
 int main() {
-    int T;
-    cin >> T;
-    for (int t = 0; t < T; t++) {
-        int A, B;
-        cin >> A >> B;
-        cout << A * B << endl;
+    int t;
+    cin >> t;
+    for (int i = 0; i < t; i++) {
+        int a, b;
+        cin >> a >> b;
+        cout << a * b << endl;
     }
     return 0;
 }
