@@ -146,19 +146,21 @@
   \end{frame}
   \begin{frame}{Example problem}
     \begin{block}{Problem description}
-      Write a program that multiplies pairs of integers
+      Write a program that multiplies pairs of integers.
     \end{block}
     \vspace{10pt}
     \begin{block}{Input description}
-      Input starts with one line containing an integer $T$, where $1\leq T \leq 100$, denoting the number of test cases.
-      Then $T$ lines follow, each containing a test case.
-      Each test case consists of two integers $A,B$, where $-10^{6} \leq A,B \leq 10^{6}$, separated by a single space.
+      The input consists of:
+      \begin{itemize}
+        \item One line with an integer $t$ ($1\leq t\leq 100$), the number of test cases.
+        \item $t$ lines, each with two integers $a$ and $b$ ($|a|,|b| \leq 10^6$), the numbers to multiply.
+      \end{itemize}
     \end{block}
 
     \vspace{10pt}
 
     \begin{block}{Output description}
-      For each test case, output one line containing the value of $A\times B$.
+      For each test case, output the value of $a\times b$.
     \end{block}
   \end{frame}
   \begin{frame}{Example problem}
@@ -244,8 +246,8 @@
   \end{frame}
   \begin{frame}{Why did the 3 solutions fail?}
     \begin{itemize}
-      \item <1-> Lets check the input again: $-10^{6} \leq A,B \leq 10^{6}$
-      \item <2-> Worst case scenario: $A=10^6$ and $B=10^6$ giving  $A \times B = 10^{12}$
+      \item <1-> Lets check the input again: $|a|,|b| \leq 10^6$
+      \item <2-> Worst case scenario: $a=10^6$ and $b=10^6$ giving  $a \times b = 10^{12}$
       \item <3-> Does $10^{12}$ fit in a 32-bit \texttt{int}?
       \item <4-> $\log_2 10^{12} \approx 40$, so \textbf{NO}, 40 bits don't fit in an \texttt{int}
       \item <5-> Use \texttt{long (long)} when possible, except in Python
