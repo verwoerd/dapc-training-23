@@ -368,9 +368,9 @@
   \end{frame}
   \begin{frame}{Problem: Fastestest Function: Observations}
     \begin{itemize}
-      \item We receive the result of the following equation:\\$x=\frac{a_x}{b+a_x}$ and $y=\frac{a_y}{b+a_y}$\\ where $a_x$ is the time spend on \texttt{foo} for $x$ and $b$ is the other runtime of the program.
-      \item The factor we are looking for is calculated by $\frac{a_x}{a_y}$
-      \item Rewrite the two equations to $a_x$ and $b_x$\\$x=\frac{a_x}{b+a_x} \equiv bx+a_{x}x = a_x \equiv bx = a_x - a_{x}x \equiv bx = a_x(1-x) \equiv a_x = \frac{bx}{1-x}$\\ Resulting in $a_x=\frac{bx}{1-x}$ and $a_y=\frac{by}{1-y}$.
+      \item We receive the result of the following equations:\\$x=\frac{a_x}{b+a_x}$ and $y=\frac{a_y}{b+a_y}$\\ where $a_x$ is the time spent on \texttt{foo} for $x$ and $b$ is the remaining runtime of the program.
+      \item The factor we are looking for is calculated by $\frac{a_x}{a_y}$.
+      \item Rewrite the two equations to $a_x$ and $b_x$:\\$x=\frac{a_x}{b+a_x} \equiv bx+a_{x}x = a_x \equiv bx = a_x - a_{x}x \equiv bx = a_x(1-x) \equiv a_x = \frac{bx}{1-x}$\\ Resulting in $a_x=\frac{bx}{1-x}$ and $a_y=\frac{by}{1-y}$.
       \item filling the factor formula:\\ $\frac{a_x}{a_y}= a_{x}a_{y}^{-1} = \frac{bx}{1-x}\cdot\frac{1-y}{by} = \frac{bx(1-y)}{(1-x)by} \equiv \frac{x(1-y)}{y(1-x)}$.
       \item Calculate the factor by the formula, resulting in $\mathcal{O}(1)$ solution.
     \end{itemize}
