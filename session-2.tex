@@ -24,6 +24,7 @@
 \setminted{
   fontsize=\footnotesize,linenos,frame=lines, framesep=2mm
 }
+\usetikzlibrary{angles,quotes}
 
 % Document
 \begin{document}
@@ -73,10 +74,130 @@
   \end{frame}
   \begin{frame}{Designated Tactic}
     \begin{itemize}
-      \item
-      \item
+      \item Designated team member is in charge of the computer
+      \item Prepare templates while other members read the problems
+      \item 
     \end{itemize}
   \end{frame}
 
 
+  \section{Solutions to the ad-hoc and math problems}
+  \begin{frame}{Jabbing Jets}
+    \begin{itemize}
+      \item Source BAPC Preliminaries 2022
+      \item Time limit: 1s
+      \item Given $n$ concentric circles, find the maximal number of points on these circles such that the distance between any two points is at least $e$.
+    \end{itemize}
+    Original problem written by the BAPC 2022 jury and licensed under \doclicenseLongNameRef.
+
+    \doclicenseImage
+
+  \end{frame}
+  \begin{frame}{Jabbing Jets}
+    \begin{columns}
+      \column{0.75\textwidth}
+      \begin{itemize}
+        \item Observation 1: time limit of 1s so looking for $\mathcal{O}(n)$ solution
+        \item Observation 2: Because $r_{i+1}-r_i \geq e$ every circle can be considered separately.
+        \item 2 points are divided by angle $\alpha$
+        \item you can calculate $\alpha = 2 \arcsin{}(\frac{e}{2r})$
+        \item The radius of a circle is $2\pi$ so the max number of points with distance $e$ can be calculated by\\
+        $\left\lfloor\frac{2\pi}{\alpha}\right\rfloor \equiv \left\lfloor \frac{2\pi}{2 \arcsin{}(\frac{e}{2r})}\right\rfloor$
+        \item Do this for every circle and sum the numbers
+        \item Pitfall 1: if $2r < e$ then there can only be one point
+        \item Pitfall 2: rounding can cause issues, add $0.5\cdot 10^{-6}$
+      \end{itemize}
+      \column{.25\textwidth}
+      \input{dapc-j.tikz}
+    \end{columns}
+  \end{frame}
+  \begin{frame}[containsverbatim]{Solution for Jabbing Jets}
+    \inputminted{python}{code/session-1/python/dapc-j.py}
+  \end{frame}
+  \begin{frame}{Lots of Liquid}
+    \begin{itemize}
+      \item Source BAPC Preliminaries 2022
+      \item Time limit: 1s
+      \item Find the length of the side of a cube that contains all liquid.
+    \end{itemize}
+      Original problem written by the BAPC 2022 jury and licensed under \doclicenseLongNameRef.
+      \doclicenseImage
+  \end{frame}
+  \begin{frame}{Lots of Liquid}
+    \begin{itemize}
+      \item Observation: Number of inputs is $10^9$, so we are looking for a $\mathcal{O}(n)$ solution
+      \item The volume of a cube is $c^3$
+      \item The length of cube with volume v  is $\sqrt[3]{v}$
+      \item Sum all volumes of the cubes and calculate the length of the cube
+      \item Print out \[\sqrt[3]{\sum_c^{i=0}c_i}\]
+    \end{itemize}
+  \end{frame}
+  \begin{frame}[containsverbatim]{Lots of Liquid}
+    \inputminted{python}{code/session-1/python/dapc-l.py}
+    \inputminted{kotlin}{code/session-1/kotlin/dapc-l.kt}
+  \end{frame}
+  \begin{frame}{Bellevue}
+    \begin{itemize}
+      \item Source BAPC 2022
+      \item Time limit: 1s
+      \item  Given the profile of an island, find the point with the largest viewing angle of the sea.
+    \end{itemize}
+    Original problem written by the BAPC 2022 jury and licensed under \doclicenseLongNameRef.
+    \doclicenseImage
+  \end{frame}
+  \begin{frame}{Bellevue}
+    \begin{itemize}
+      \item The answer is always an angle from the start or the end of the island to another point
+      \item Calculate the angle from start and end to any other point
+      \item print out the solution.\\
+      \item alternatively calculate the convex hull
+      \item the best angle is from either the first and second point in the hull or the last and previous.
+    \end{itemize}
+  \end{frame}
+  \begin{frame}[containsverbatim]{Bellevue}
+    \inputminted{python}{code/session-1/python/bapc-b.py}
+  \end{frame}
+  \begin{frame}{Equalising Audio}
+    \begin{itemize}
+      \item Source BAPC 2022
+      \item Time limit: 4s
+      \item  Given a list of frequencies, normalize it so the perceived loudness is \[\frac{1}{n} \sum^n_{i=1}a_i^2=x\]
+    \end{itemize}
+    Original problem written by the BAPC 2022 jury and licensed under \doclicenseLongNameRef.
+    \doclicenseImage
+  \end{frame}
+  \begin{frame}{Equalising Audio}
+    \begin{itemize}
+      \item Observation time limit is high for I/O operations
+      \item First calculate the current perceived loudness \[x_{cur} = \frac{1}{n} \sum^n_{i=1}a_i^2\]
+      \item Then print out the frequency reduced by $\sqrt{\frac{x}{x_{cur}}}$, since
+      \[\frac{1}{n} \sum^n_{i=1}\left(\sqrt{\frac{x}{x_{cur}}}a_i\right)^2 = \frac{1}{n} \sum^n_{i=1}\left(\sqrt{\frac{x}{x_{cur}}}\right)^2a_i^2 = \frac{x}{x_{cur}}\cdot \frac{1}{n}\sum^n_{i=1}a_i^2 = \frac{x}{x_{cur}}\cdot x_{cur} = x\]
+      \item Pitfall: if the current perceived loudness ($x_{cur}$) is 0, then the result is \texttt{0 \ldots 0}
+    \end{itemize}
+  \end{frame}
+  \begin{frame}[containsverbatim]{ Equalising Audio}
+    \inputminted{python}{code/session-1/python/bapc-e.py}
+    \inputminted{kotlin}{code/session-1/kotlin/bapc-e.kt}
+  \end{frame}
+  \begin{frame}{Failing Flagship}
+    \begin{itemize}
+      \item Source BAPC 2022
+      \item Time limit: 1s
+      \item  Compute the minimum angle in degrees between two wind directions.
+    \end{itemize}
+    Original problem written by the BAPC 2022 jury and licensed under \doclicenseLongNameRef.
+    \doclicenseImage
+  \end{frame}
+  \begin{frame}{Failing Flagship}
+    \begin{itemize}
+      \item Convert the letters to degrees $d_1$ and $d_2$
+      \item Execute the algorithm as described in the problem by adding and subtracting a delta, starting at $45\deg$
+      \item Ever next letter represents a half of previous delta and either add or subtract it
+      \item Be careful of overflow with NW
+      \item print out the min($d_2-d_1, 360+d_1-d_2$)
+    \end{itemize}
+  \end{frame}
+  \begin{frame}[containsverbatim]{Failing Flagship}
+    \inputminted{python}{code/session-1/python/bapc-f.py}
+  \end{frame}
 \end{document}

@@ -1,0 +1,52 @@
+% Preamble
+\documentclass[11pt,pdf, aspectratio=169]{beamer}
+\usetheme{metropolis}
+\title{DAPC 2023 Training Sessions\\Session 2}
+\author{Verwoerd}
+
+% Packages
+\usepackage{amsmath}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{minted}
+\usepackage[
+  type={CC},
+  modifier={by-sa},
+  version={4.0},
+]{doclicense}
+\setsansfont{Fira Sans}
+\usemintedstyle{manni}
+\setminted{
+  fontsize=\footnotesize,linenos,frame=lines, framesep=2mm
+}
+
+\begin{document}
+  \maketitle
+
+
+  \section{Solutions to the ad-hoc and math problems}
+  \begin{frame}{Extended Braille}
+    \begin{itemize}
+      \item Source BAPC Preliminaries 2022
+      \item Time limit: 8s
+      \item Given $n$ braille characters by their points, determine how many of them are distinct up to translation.
+    \end{itemize}
+    Original problem written by the BAPC 2022 jury and licensed under \doclicenseLongNameRef.
+
+    \doclicenseImage
+
+  \end{frame}
+  \begin{frame}{Extended Braille}
+    \begin{itemize}
+      \item Observation 1: time limit of 8s is due to high input size
+      \item Observation 2: Number of inputs is $10^6$, so we are looking for a $\mathcal{O}(n\log{}n)$
+      \item Per Braille character sort the dots on $x$ then $y$
+      \item Move the first ordered dot to $(0, 0)$ by subtracting the first point coordinate from all the dots\\
+      $\all^{i=0}_m (x'_i, y'_1) = (x_i - x_o, y_i - y_0)$
+      \item Add the transposed characters to a Hashmap and count the unique keys
+      \item Resulting a $\mathcal{O}(n\log{}n)$ or amortized $\mathcal{O}(n)$
+    \end{itemize}
+  \end{frame}
+\end{document}

@@ -1,0 +1,17 @@
+\newcommand{\myrad}{2cm}
+\newcommand{\myang}{25}
+\begin{tikzpicture}
+
+  \coordinate (O) at (0,0);
+  \coordinate (M) at (1.812, 0 );
+  \coordinate (U) at (\myang:\myrad);
+  \coordinate (L) at (-\myang:\myrad);
+  \draw (O) node[circle, inner sep=1.5pt, fill] {} circle [ radius = \myrad];
+  \draw (U) node[circle, inner sep=1.5pt, fill] {};
+  \draw (L) node[circle, inner sep=1.5pt, fill] {};
+  \draw (U)  --  node[midway, above] {$r$} (O) -- (L);
+  \draw (U) -- node[midway, left] {$e$} (L);
+  \draw pic [draw, -, angle radius=.75cm,"$\alpha$"] {angle = L--O--U};
+%  \draw (O) -- (M);
+
+\end{tikzpicture}
