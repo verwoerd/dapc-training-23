@@ -34,7 +34,6 @@
       \item Team Tactics
       \item Utilizing the Test Session
       \item How to select problems
-      \item Dealing with wrong submissions
       \item Solutions to the Ad-hoc and Math Problems
       \item Solving Sorting and Search Problems
     \end{itemize}
@@ -54,29 +53,101 @@
       \item parallelize
       \item work on paper (e.g. pseudocode of flow diagram)
       \item debug on paper
+      \item use cardboard dog principle when stuck
     \end{itemize}
   \end{frame}
   \begin{frame}{Team Tactics}
     \begin{itemize}
       \item<1-> Plot of the contest: 3 contestants, 1 computer
       \item<2-> Several tactics how to divide the computer efficiently
-      \item<3-> Shuffle Tactic
-      \item<3-> Designated Tactic
-      \item<3-> Pick and mix what works best for your team
+      \item<3-> Shuffle Tactic\begin{itemize}
+                                \item<4-> Rotate around who sites behind the pc
+                                \item<4-> After submitting a problem switch around if someone has a solution
+                                \item<4-> Useful when programming in different languages
+      \end{itemize}
+      \item<3-> Designated Tactic\begin{itemize}
+                                   \item<5->Dedicated computer behind person
+                                   \item<5-> Other teams work on paper or read with on screen
+                                   \item<5-> Useful for teams with different disciplines
+      \end{itemize}
+      \item<3-> No best solution: Pick and mix what works best for your team
     \end{itemize}
   \end{frame}
-  \begin{frame}{Shuffle Tactic}
+
+
+  \section{Utilizing the Test Session}
+  \begin{frame}{Utilizing the Test Session}
     \begin{itemize}
-      \item Rotate around who sits behind the pc
-      \item After submitting a problem switch around if someone has a solution
-      \item Use when programming in different languages
+      \item The test session is a short version practice contest with a few simple problems
+      \item Find your team workspace
+      \item Practice start of the contest, e.g. where are the problems located, how is the start announced
+      \item Practice end of the contest, e.g. freeze warning, countdown.
     \end{itemize}
   \end{frame}
-  \begin{frame}{Designated Tactic}
+  \begin{frame}{Testing the envirionment}
     \begin{itemize}
-      \item Designated team member is in charge of the computer
-      \item Prepare templates while other members read the problems
-      \item 
+      \item<1-> Get to know the programming environment and it's quirks
+      \item <2-> Where is everything located: samples, documentation, important links
+      \item <3-> Try all IDE and tools you \textit{might} use during the contest
+      \item <4-> Test out printing, if supported, from ide, command line and CSS
+      \item <5-> All files will be removed after the test session!
+    \end{itemize}
+  \end{frame}
+  \begin{frame}{Testing the Contest System}
+    \begin{itemize}
+      \item Test the possible problems, how are they reported back
+      \begin{itemize}
+        \item Correct (AC)
+        \item Wrong Answer (WA)
+        \item Run Time Error (RTE), like segmentation fault, going over heap/stack space, null pointer exception
+        \item Time Limit Exceeded (TLE)
+        \item Compiler Error
+      \end{itemize}
+      \item Test Clarification requests
+      \item Where are general clarifications displayed
+    \end{itemize}
+  \end{frame}
+
+
+  \section{Hints on selecting the problems}
+  \begin{frame}{Selecting the first problem}
+    \begin{itemize}
+      \item Decide on a reading tactic
+      \begin{itemize}
+        \item do we all start on reading the first problem?
+        \item Or do one person start on the end?
+      \end{itemize}
+      \item There are usually several ``simple'' problems in a set
+      \item Be careful: the easiest problems usually contain some pitfall corner cases!
+    \end{itemize}
+  \end{frame}
+  \begin{frame}{Finding the easiest problems by results}
+    \begin{itemize}
+      \item After 15 minutes of contest the first balloons will be handed out
+      \item Look at the scoreboard or to the balloons which problem is solved most % TODO: Add image of bottom scoreboard
+      \item Or the problems page in DOMJudge %TODO: Add image of frequency graph of problems page
+      \item \textbf{Warning}: The first problem solved is not guaranteed the easiest!
+    \end{itemize}
+  \end{frame}
+  \begin{frame}{My problem is wrong, what now}
+    Print out the problem and let other people work on other problems, work out cases that might go wrong.
+    \begin{itemize}
+      \item When the result is RTE:
+      \begin{itemize}
+        \item Check for possible Null pointers, array overflows or integer overflow
+        \item Check the input specification, don't forget 0 can do unexpected things
+      \end{itemize}
+      \item When the result is TLE:
+      \begin{itemize}
+        \item Check stop conditions, maybe an infinite loop?
+        \item Problem is too slow, try optimizing or thinking of a faster solution
+      \end{itemize}
+      \item When then result is WA:
+      \begin{itemize}
+        \item Check for corner cases, don't forget zero
+        \item Check correctness of algorithm
+      \end{itemize}
+      \item \textbf{Warning}: A problem can be WA and TLE at the same time, but only 1 is reported back!
     \end{itemize}
   \end{frame}
 
@@ -120,14 +191,14 @@
       \item Time limit: 1s
       \item Find the length of the side of a cube that contains all liquid.
     \end{itemize}
-      Original problem written by the BAPC 2022 jury and licensed under \doclicenseLongNameRef.
-      \doclicenseImage
+    Original problem written by the BAPC 2022 jury and licensed under \doclicenseLongNameRef.
+    \doclicenseImage
   \end{frame}
   \begin{frame}{Lots of Liquid}
     \begin{itemize}
       \item Observation: Number of inputs is $10^9$, so we are looking for a $\mathcal{O}(n)$ solution
       \item The volume of a cube is $c^3$
-      \item The length of cube with volume v  is $\sqrt[3]{v}$
+      \item The length of cube with volume v is $\sqrt[3]{v}$
       \item Sum all volumes of the cubes and calculate the length of the cube
       \item Print out \[\sqrt[3]{\sum_c^{i=0}c_i}\]
     \end{itemize}
@@ -199,5 +270,56 @@
   \end{frame}
   \begin{frame}[containsverbatim]{Failing Flagship}
     \inputminted{python}{code/session-1/python/bapc-f.py}
+  \end{frame}
+
+
+  \section{Solving Sorting and Search Problems}
+  \begin{frame}{Natural Order Sorting Algorithms}
+    \begin{itemize}
+      \item Sorting algorithms sort items in a natural order
+      \item Use build in sort as much of possible
+      \item C++17: \mintinline{c++}|std::sort()|
+      \item Python: \mintinline{python}|list.sort()| or \mintinline{python}|sorted()|
+      \item Java/Kotlin: \mintinline{java}|Arrays.sort()| or \mintinline{java}|Collections.sort()|
+      \item C++ uses IntroSort and Python/Java/Kotlin use TimSort, both $\mathcal{O}(n\log{}n)$
+      \item For special case sorting, write a specific comparator or key function (Python)
+    \end{itemize}
+  \end{frame}
+  \begin{frame}{Binary Search}
+    \begin{itemize}
+      \item If the input is sorted or monotone increasing you can use binary search
+      \item start in the middle and half the search space based on if the value is to high or to low
+      \item Results in an $\mathcal{O}(\log{}n)$ algorithm
+      \item C++17: \mintinline{c++}|std::binary_search()|
+      \item Python: \mintinline{python}|bisect()|
+      \item Java/Kotlin: \mintinline{java}|Arrays.binarySearch()| or \mintinline{java}|Collections.binarySearch()|
+      \item Implementing your own binary search is error prone!
+    \end{itemize}
+  \end{frame}
+  \begin{frame}{Depth first search (DFS)}
+    \begin{itemize}
+      \item Greedy algorithm to search a graph or tree
+      \item Visit every node when it is discovered
+      \item Usually implemented by using a Stack datastructure
+      \item Use an array to keep track of discovered node
+      \item Example application is solving a maze
+      \item \textbf{Note}: Using a array is faster then using a Set
+    \end{itemize}
+  \end{frame}
+  \begin{frame}{Breath first search (BFS)}
+    \begin{itemize}
+      \item Simulair to DFS, but visits based on discovery order
+      \item Usually implemented by using a queue
+      \item Example application is flood filling to find a closest node
+    \end{itemize}
+  \end{frame}
+  \begin{frame}{Search using a heap}
+    \begin{itemize}
+      \item Search a space, selecting the next position by a condition
+      \item For Example: the closest node in Dijkstra's Shortest Path Algorithm
+      \item C++17: \mintinline{c++}|std::priority_queue|
+      \item Python: \mintinline{python}|heapify()| and \mintinline{python}|heapq|
+      \item Java/Kotlin: \mintinline{java}|java.util.PriorityQueue()|
+    \end{itemize}
   \end{frame}
 \end{document}
