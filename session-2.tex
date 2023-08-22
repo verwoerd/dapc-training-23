@@ -9,6 +9,7 @@
 
 % Packages
 \usepackage{amsmath}
+\usepackage{amssymb}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{graphicx}
@@ -24,7 +25,8 @@
 \setminted{
   fontsize=\footnotesize,linenos,frame=lines, framesep=2mm
 }
-\usetikzlibrary{angles,quotes}
+\usetikzlibrary{angles,quotes,graphs, graphdrawing}
+\usegdlibrary {layered}
 
 % Document
 \begin{document}
@@ -321,5 +323,299 @@
       \item Python: \mintinline{python}|heapify()| and \mintinline{python}|heapq|
       \item Java/Kotlin: \mintinline{java}|java.util.PriorityQueue()|
     \end{itemize}
+  \end{frame}
+  \begin{frame}{Problem: Bubble-bubble Sort}
+    \begin{itemize}
+      \item Source BAPC Preliminaries 2022
+      \item Problem name: Bubble-bubble Sort
+      \item Time limit: 2s
+    \end{itemize}
+    Original problem written by the BAPC 2022 jury and licensed under \doclicenseLongNameRef.
+
+    \doclicenseImage
+
+  \end{frame}
+  \begin{frame}{Problem: Bubble-bubble Sort (1)}
+    Bubbles!
+    As a fanatical supporter of the Bubbles Are Perfect Creatures movement, you have accumulated a large collection of bubbles in all colours and sizes.
+    Being a long time member, your bubbles are among the best in the world, and now is the time to show this.
+    Tomorrow, the yearly Bubble Exposition will be held, and your goal is to win the Bubble Prize and become the Bubble Champion!
+
+    However, this is not an easy competition.
+    In order to win, you do not only need the most beautiful bubbles, you also need the best-looking placement of bubbles.
+    You have decided to order the bubbles by bubbliness: less bubblier bubbles to the left, more bubblier bubbles to the right.
+    However, it is hard to compare all the bubbles in your collection at once. In fact, you can only compare up to $k$ bubbles by eye before losing track of all the bubbles.
+    Since your collection consists of more than $k$ bubbles, you need a fancier sorting algorithm.
+
+
+  \end{frame}
+  \begin{frame}{Problem: Bubble-bubble Sort (2)}
+    Your first thought is to use the best sorting algorithm for bubbly purposes, namely Bubble Sort.
+    However, this is the most prestigious bubble competition, so you decide to do better: Bubble-bubble Sort. It works as follows.
+
+    Initially, your bubbles are placed in an arbitrary order.
+    Every hour, you do the following: you look at the first $k$ bubbles and place them in the optimal order.
+    Then, you look at bubbles $2$ to $k+1$ and place those in the correct order.
+    Then, you look at bubbles $3$ to $k+2$, and so on, until you have placed the last $k$ bubbles in the correct order.
+    You then admire how the bubble collection looks so far until the next hour begins and you start at the first bubbles again.
+
+    Is this algorithm fast enough to place all your bubbles, or do you need to go further and invent a Bubble-bubble-bubble Sort algorithm?
+    To be precise, after how many hours are the bubbles in the optimal positions?
+  \end{frame}
+  \begin{frame}{Problem: Bubble-bubble Sort: Input and Output}
+    \textbf{Input}
+    The input consists of:
+    \begin{itemize}
+      \item One line with two integers $n$ and $k$ ($2 \leq k < n \leq 2500$), the number of bubbles and the number of bubbles you can sort at once.
+      \item One line with $n$ integers $a$ ($0 \leq a \leq 10^9$), the bubbliness of each bubble in the initial placement of your bubble collection.
+    \end{itemize}
+
+    \textbf{Output}
+
+    Output the number of hours needed to sort your bubble collection.
+  \end{frame}
+  \begin{frame}{Problem: Bubble-bubble Sort: Samples}
+    \begin{tabular}{|l|l|}
+      \hline
+      \textbf{Sample Input 1} & \textbf{Sample Output 1} \\
+      \hline
+      \texttt{5 2}            & \texttt{3}               \\
+      \texttt{3 4 1 5 2}      &                          \\
+      \hline
+    \end{tabular}
+
+    \begin{tabular}{|l|l|}
+      \hline
+      \textbf{Sample Input 2}        & \textbf{Sample Output 2} \\
+      \hline
+      \texttt{8 3}                   & \texttt{2}               \\
+      \texttt{60 8 27 7 68 41 53 44} &                          \\
+      \hline
+    \end{tabular}
+
+    \begin{tabular}{|l|l|}
+      \hline
+      \textbf{Sample Input 3} & \textbf{Sample Output 3} \\
+      \hline
+      \texttt{6 3}            & \texttt{3}               \\
+      \texttt{3 2 4 2 3 1}    &                          \\
+      \hline
+    \end{tabular}
+  \end{frame}
+  \begin{frame}{Problem: Bubble-bubble Sort: Example 2: After 1 hour}
+    Window $k$ is 3.\\
+    \begin{tabular}{|l|rrrrrrrr|}
+      \hline
+      Hour   &    &    &             &             &    &    &             &             \\
+      \hline
+      0      & 60 & 8  & 27          & 7           & 68 & 41 & 53          & 44          \\
+      \hline
+      step 1 & 8  & 27 & 60          &             &    &    &             &             \\
+      step 2 &    & 7  & 27          & 60          &    &    &             &             \\
+      step 3 &    &    & 27          & 60          & 68 &    &             &             \\
+      step 4 &    &    &             & 41          & 60 & 68 &             &             \\
+      step 5 &    &    &             &             & 53 & 60 & 68          &             \\
+      step 6 &    &    &             &             &    & 44 & 60          & 68          \\
+      \hline
+      hour 1 & 8  & 7  & \textbf{27} & \textbf{41} & 53 & 44 & \textbf{60} & \textbf{68} \\
+      \hline
+    \end{tabular}\\
+    List is not sorted yet, we need an other hour.
+  \end{frame}
+  \begin{frame}{Problem: Bubble-bubble Sort: Example 2: After 2 hours}
+    Window $k$ is 3.\\
+    \begin{tabular}{|l|rrrrrrrr|}
+      \hline
+      Hour   &   &   &    &    &    &    &    &    \\
+      \hline
+      hour 1 & 8 & 7 & 27 & 41 & 53 & 44 & 60 & 68 \\
+      \hline
+      step 1 & 7 & 8 & 27 &    &    &    &    &    \\
+      step 2 &   & 8 & 27 & 41 &    &    &    &    \\
+      step 3 &   &   & 27 & 41 & 53 &    &    &    \\
+      step 4 &   &   &    & 41 & 44 & 53 &    &    \\
+      step 5 &   &   &    &    & 44 & 53 & 60 &    \\
+      step 6 &   &   &    &    &    & 53 & 60 & 68 \\
+      \hline
+      hour 2 & 7 & 8 & 27 & 41 & 44 & 53 & 60 & 68 \\
+      \hline
+    \end{tabular}\\
+    List is sorted, so solution is 2.
+  \end{frame}
+  \begin{frame}{Problem: Bubble-bubble Sort: Naive Solution}
+    \begin{itemize}
+      \item<1-> Observation: n is 2500, so the target is an $\mathcal{O}(n^2)$  solution
+      \item<2-> Worst case is described in example 3:\\
+      \begin{tabular}{|l|rrrrrr|}
+        \hline
+        hour 0 & 3          & 2          & 4 & 2          & 3 & \textbf{1} \\
+        \hline
+        hour 1 & 2          & 2          & 3 & \textbf{1} & 3 & 4          \\
+        hour 2 & 2          & \textbf{1} & 2 & 3          & 3 & 4          \\
+        \hline
+        hour 3 & \textbf{1} & 2          & 2 & 3          & 3 & 4          \\
+        \hline
+      \end{tabular}
+      \item<3-> The lowest number is at the right most position and moves $k-1$ steps to the left, while total steps needed are $n-1$.
+      \item<3-> So the worst case number of hours is $\left\lceil\frac{n-1}{k-1}\right\rceil$
+      \item<4-> The described algorithm is $\mathcal{O}\left(\frac{n-1}{k-1}n\right) \equiv \mathcal{O}(n^2)$
+    \end{itemize}
+  \end{frame}
+  \begin{frame}{Problem: Bubble-bubble Sort: Smart Solution}
+    \begin{itemize}
+      \item<1-> First sort the list to determine the new position of each item $n_i$.
+      \item<1-> Warning: Be mindful of duplicates, link the indexes
+      \item<2-> then print out with $i$ is the index of the input
+      \[\max D_i = \begin{cases}
+                     0 & \text{if } i \leq n_i \text{ (The item moves right)}\\
+                     \left\lceil\frac{i-n_i - 1}{k-1}\right\rceil & \text{(the item moves left)} \\
+      \end{cases}\]
+      \item<3-> The complexity is $\mathcal{O}(n\log{}n)$ (sorting) + $\mathcal{O}(n)$ (finding the max $D_i$)
+    \end{itemize}
+  \end{frame}
+  \begin{frame}[containsverbatim]{ Problem: Bubble-bubble Sort: Solution}
+    \inputminted{python}{code/session-1/python/dapc-b.py}
+  \end{frame}
+  \begin{frame}{Problem: Imperfect Imperial Units}
+    \begin{itemize}
+      \item Source BAPC 2022
+      \item Problem name: Imperfect Imperial Units
+      \item Time limit: 4s
+    \end{itemize}
+    Original problem written by the BAPC 2022 jury and licensed under \doclicenseLongNameRef.
+
+    \doclicenseImage
+  \end{frame}
+  \begin{frame}{Problem: Imperfect Imperial Units}
+    You are writing a paper for the Beta Astronomy Physics Conference about your recent discovery on grey holes.
+    One of your collaborators has performed a huge number of measurements,which you would like to analyse in order to draw some conclusions.
+    The only problem is: the data is measured in a wide variety of units,and to your disgust, they appear to use a mix of the imperial and metric systems.
+    To simplify your analysis, you need to convert all these measurements into a different unit.
+  \end{frame}
+  \begin{frame}{Problem: Imperfect Imperial Units: Input}
+    The input consists of:
+    \vspace{-0.5em}% Attempt to make everything fit in two pages
+    \begin{itemize}
+      \item One line with two integers $n$ and $q$ ($1\leq n\leq 100$, $1\leq q\leq 10,000$),
+      the number of unit conversion equations and the number of queries to answer.
+      \item $n$ lines, each defining a unit conversion in the format\\ ``\texttt{1 <unit> = <value> <unit>}''.
+      \item $q$ lines, each with a query in the format ``\texttt{<value> <unit> to <unit>}''.
+    \end{itemize}
+
+    \vspace{-0.5em}% Attempt to make everything fit in two pages
+    In these formats, ``\texttt{<value>}'' is a floating-point number $v$
+    ($0.001 \leq v \leq 1000$, with at most $9$ digits after the decimal point) and
+    ``\texttt{<unit>}'' is a string of at most $20$ English lowercase letters (\texttt{a-z}).
+    A unit in a query is guaranteed to be defined in at least one unit conversion equation.
+    Every unit can be converted into every other unit in \emph{at most} one way.
+  \end{frame}
+  \begin{frame}{Problem: Imperfect Imperial Units: Output}
+    For every query, output the value of the requested unit, or ``\texttt{impossible}'' if the query cannot be answered.
+
+    Your answers should have a \emph{relative} error of at most $10^{-6}$.
+
+  \end{frame}
+  \begin{frame}{Problem: Imperfect Imperial Units: Samples (1)}
+    \begin{tabular}{|l|l|}
+      \hline
+      Input Sample 1               & Output Sample 1 \\
+      \hline
+      4 3                          &                 \\
+      1 foot = 12 inch             &                 \\
+      1 yard = 3 foot              &                 \\
+      1 meter = 100 centimeter     &                 \\
+      1 centimeter = 10 millimeter &                 \\
+      750 millimeter to meter      & 0.75            \\
+      42 yard to inch              & 1512            \\
+      10 meter to foot             & impossible      \\
+      \hline
+    \end{tabular}
+  \end{frame}
+
+  \begin{frame}{Problem: Imperfect Imperial Units: Samples (2)}
+    \begin{tabular}{|l|l|}
+      \hline
+      Input Sample 2                    & Output Sample 2           \\
+      \hline
+      4 3                               &                           \\
+      1 fortnight = 14 day              &                           \\
+      1 microcentury = 0.036525 day     &                           \\
+      1 microcentury = 1000 nanocentury &                           \\
+      1 week = 7 day                    &                           \\
+      22.2 fortnight to nanocentury     & 8509240.2464065708427     \\
+      2.5 nanocentury to week           & 1.3044642857142857142e-05 \\
+      3.14 day to fortnight             & 0.22428571428571428572    \\
+      \hline
+    \end{tabular}
+  \end{frame}
+
+  \begin{frame}{Problem: Imperfect Imperial Units: Samples (3)}
+    \begin{tabular}{|l|l|}
+      \hline
+      Input Sample 3                   & Output Sample 3           \\
+      \hline
+      10 2                             &                           \\
+      1 micrometer = 1000 nanometer    &                           \\
+      1 millimeter = 1000 micrometer   &                           \\
+      1 meter = 1000 millimeter        &                           \\
+      1 kilometer = 1000 meter         &                           \\
+      1 megameter = 1000 kilometer     &                           \\
+      1 lightsecond = 299.792458 meter &                           \\
+      1 lightminute = 60 lightsecond   &                           \\
+      1 lighthour = 60 lightminute     &                           \\
+      1 lightday = 24 lighthour        &                           \\
+      1 lightyear = 365.25 lightday    &                           \\
+      42 nanometer to lightyear        & 4.439403502903384947e-18  \\
+      42 lightyear to nanometer        & 3.9735067984839359997e+20 \\
+      \hline
+    \end{tabular}
+  \end{frame}
+
+  \begin{frame}{Problem: Imperfect Imperial Units: Solution}
+    Create a graph from for the $n$ rules, which has max 100 nodes
+
+
+    \begin{tabular}{c|c|c}
+      Sample 1               & Sample 2               & Sample 3               \\
+      \hline
+      \input{bapc-i-s1.tikz} & \input{bapc-i-s2.tikz} & \input{bapc-i-s3.tikz} \\
+    \end{tabular}
+  \end{frame}
+
+  \begin{frame}{Problem: Imperfect Imperial Units: Solution}
+    \begin{itemize}
+      \item For every query use use a BFS/DFS to search for a path from the first unit to the requested node
+      \item The problem specification ensures at most 1 path can exist, if no path is found, print out ``impossible''
+      \item This will give a $\mathcal{O}(n\cdot q)$ complexity of the algorithm
+      \item this is fast enough.
+    \end{itemize}
+  \end{frame}
+  \begin{frame}[containsverbatim]{ Problem: Imperfect Imperial Units: Solution}
+    \inputminted[fontsize=\tiny]{python}{code/session-1/python/bapc-i-search.py}
+  \end{frame}
+  \begin{frame}{Imperfect Imperial Units: Improved Solution}
+    \begin{itemize}
+      \item<1-> Our solution does calculations double, since the number of queries is significantly larger then number of units.
+      \item<2-> You can cache found (sub)conversions for future queries
+      \item<3-> Or we can add some pre processioning, calculating the conversion unit for every possible unit reachable
+      \item<3-> There are $\frac{n(n-1)}{2}$ combinations to calculate first ($\mathcal{O}(n^2)$)
+      \item<3-> Then for every query we can just lookup the factor and calculate the difference
+      \item<4-> Resulting in a faster $\mathcal{O}(n^2 + q)$
+      \item<5-> \textbf{Pitfall}: The result will fit in a double, but be careful with printing precision in C++.
+    \end{itemize}
+  \end{frame}
+  \begin{frame}[containsverbatim]{ Problem: Imperfect Imperial Units: Improved Solution}
+    \inputminted[fontsize=\tiny]{python}{code/session-1/python/bapc-i-cache.py}
+  \end{frame}
+
+
+  \section{Conclusion}
+  \begin{frame}{Guest speaker}
+    % ?
+  \end{frame}
+  \begin{frame}{Next Session}
+    Next session is on <Insert date and location>.\\
+
+    \texttt{<url to practice domjudge>}
   \end{frame}
 \end{document}

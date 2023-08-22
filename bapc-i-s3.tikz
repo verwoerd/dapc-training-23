@@ -1,0 +1,6 @@
+\begin{tikzpicture}[scale=0.8]
+  \graph[layered layout] {
+    nanometer --micrometer -- milimeter -- meter -- kilometer -- megameter;
+    lightyear -- lightday -- lighthour -- lightminute -- lightsecond -- meter;
+  };
+\end{tikzpicture}

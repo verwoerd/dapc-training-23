@@ -1,0 +1,6 @@
+\begin{tikzpicture}
+  \graph[layered layout] {
+    yard -- foot -- inch;
+    meter -- centimeter -- milimeter;
+  };
+\end{tikzpicture}

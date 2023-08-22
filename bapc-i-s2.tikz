@@ -1,0 +1,7 @@
+\begin{tikzpicture}
+  \graph[layered layout] {
+  fortnight -- day --microcentury;
+  nanocentury -- microcentury;
+  week -- day;
+  };
+\end{tikzpicture}
