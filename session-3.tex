@@ -21,6 +21,8 @@
 \setminted{
   fontsize=\footnotesize,linenos,frame=lines, framesep=2mm
 }
+\usetikzlibrary{angles,quotes,graphs, graphdrawing,positioning}
+\usegdlibrary {layered}
 
 \begin{document}
   \maketitle
@@ -266,7 +268,7 @@
       \item Usually if an interactive problem is in the set, an simple interactive problem will be included in the test session
     \end{itemize}
   \end{frame}
-  \begin{frame}{Type of probelms for Interactive Problems}
+  \begin{frame}{Type of problems for Interactive Problems}
     \begin{itemize}
       \item Search in a finite space
       \item Explore a maze
@@ -292,7 +294,15 @@
         \item Runtime Error means you returned an 0 error code
         \item If both occur, you will get either
       \end{itemize}
+      \item ICPC style contests don't have ``Idleness Limit Exceeded'', but a total runtime limit.
     \end{itemize}
+  \end{frame}
+  \begin{frame}{Flushing the output}
+    \begin{description}
+      \item [C++]: end your output with \mintinline{c++}|std::flush|
+      \item[Python]: use the flush parameter, like \mintinline{python}|print("abc", flush=True)|
+      \item[Java/Kotlin]: use a \mintinline{java}|java.io.BufferedWriter| and after each write use the \mintinline{java}|.flush()|.
+    \end{description}
   \end{frame}
   \begin{frame}{Interactive problems testing tool}
     \begin{itemize}
@@ -323,5 +333,134 @@
 
     The interactor is not adaptive, i.e., the secret number is fixed during a round.
     Using more than 12 guesses will result in a wrong answer.
+  \end{frame}
+  \begin{frame}{example interactive problem: Example interaction}
+    \begin{tabular}{|l|l|}
+      \hline
+      \textbf{Sample Input 1} & \textbf{Sample Output 1} \\
+      \hline
+      \texttt{1000}           &                          \\
+      & \texttt{67}              \\
+      \texttt{higher}         &                          \\
+      & \texttt{967}             \\
+      \texttt{lower}          &                          \\
+      & \texttt{500}             \\
+      \texttt{correct}        &                          \\
+      \hline
+    \end{tabular}
+  \end{frame}
+
+  \begin{frame}[containsverbatim]{ Problem: Bubble-bubble Sort: Python Solution}
+    \inputminted{python}{code/session-1/python/interactive-example.py}
+  \end{frame}
+  \begin{frame}[containsverbatim]{ Problem: Bubble-bubble Sort: C++ Solution}
+    \inputminted[fontsize=\tiny]{c++}{code/session-1/c++/interactive-example.cpp}
+  \end{frame}
+  \begin{frame}[containsverbatim]{ Problem: Bubble-bubble Sort: Java Solution}
+    \inputminted[fontsize=\tiny]{java}{code/session-1/java/InteractiveExample.java}
+  \end{frame}
+  \begin{frame}[containsverbatim]{ Problem: Bubble-bubble Sort: Java Solution}
+    \inputminted{kotlin}{code/session-1/kotlin/interactive-example.kt}
+  \end{frame}
+
+
+  \section{Solving Dynamic Programming Problems}
+  \begin{frame}{Dynamic Programming}
+    \begin{itemize}
+      \item Dynamic Programming (DP) is a techinque of solving problem by solving an problem by solving it in a recursive simpler sub-problem.
+      \item DP requires an overlap to occur, else its considered a divide and conquer algorithm
+    \end{itemize}
+  \end{frame}
+  \begin{frame}[containsverbatim]{Dynamic Programming: Fibonacci Numbers}
+    \begin{itemize}
+      \item The formula is $\mathcal{F}_i = \mathcal{F}_{i-1} + \mathcal{F}_{i-2}$
+      \item It depends clearly on previous calculations
+      \item It can be solved by $\mathcal{F}_1$ and $\mathcal{F}_2$ which are both 1
+    \end{itemize}
+    \begin{minted}{python}
+def Fibonacci(n):
+  if n == 1 or n == 2:
+    return 1
+  else:
+    return Fibonacci(n - 1)+ Fibonacci(n-2)
+    \end{minted}
+    \begin{minted}{kotlin}
+fun fibonacci(i: Long): Long = when(i) {
+  1L, 2L -> 1
+  else -> fibonacci(i-1) + fibonacci(i-2)
+}
+    \end{minted}
+  \end{frame}
+  \begin{frame}[containsverbatim]{Dynamic Programming: Fibonacci Numbers: Caching}
+    \begin{minted}{python}
+@lru_cache(None)
+def Fibonacci(n):
+  if n == 1 or n == 2:
+    return 1
+  else:
+    return Fibonacci(n - 1 )+ Fibonacci(n-2)
+    \end{minted}
+    \begin{minted}{kotlin}
+val cache = mutableMapOf<Long, Long>()
+fun fibonacci(i: Long): Long = when(i) {
+  1L, 2L -> 1
+  else -> cache.getOrPut(i-1){fibonacci(i-1)}
+            + cache.getOrPut(i-2){fibonacci(i-2)}
+}
+    \end{minted}
+  \end{frame}
+  \begin{frame}{Dynamic Programming: Using States}
+    Consider a weighted graph with a adjacency matrix $w$
+    \begin{columns}
+      \column{.5\textwidth}
+      \begin{tikzpicture}
+        \graph[layered layout] {
+
+          B --[edge label=5] C --[edge label=1] F;
+          B --[edge label=5] D --[edge label=1] F;
+          A --[edge label=1] E;
+          A --[edge label=7] B --[edge label=1] E --[edge label=3] F;
+        };
+      \end{tikzpicture}
+      \column{.5\textwidth}
+      \[ w = \begin{bmatrix}
+               0      & 7      & \infty & \infty & 1      & \infty \\
+               7      & 0      & 5      & 5      & 1      & \infty \\
+               \infty & 5      & 0      & \infty & \infty & 1      \\
+               1      & 5      & \infty & 0      & \infty & 1      \\
+               \infty & 1      & \infty & \infty & 0      & 3      \\
+               \infty & \infty & 1      & 1      & 3      & 0
+      \end{bmatrix}\]
+    \end{columns}
+    Calculate a matrix giving the shortest path from and to all nodes (All Pair Shortest Path (APSP)).
+  \end{frame}
+  \begin{frame}{Dynamic Programming: Using States (APSP) }
+    \begin{itemize}
+      \item Calculating Dijkstra for every node is very inefficient
+      \item Create the sub-problem calculate APSP with a subset of the connections
+      \item Define $k$ as the number of nodes to use
+      \item Then do the DP by using the following formula:\\
+      \[
+        f(i, j, k) = \begin{cases}
+                       w(i, j)  & \text{if } k = 0\\
+                       \min(f(i,j, k-1), f(i, k, k-1)+f(k, j, k-1))
+        \end{cases}
+      \]
+      \item The shortest path between $i$ and $j$ with using only the first $k$ nodes is the min of:
+      \begin{itemize}
+        \item the shortest path when using $k-1$
+        \item the shortest path from $i$ to $k$ plus the shortest path from $k$ to $j$
+      \end{itemize}
+      \item This is Floyd-Warshall's APSP with a complexity $\mathcal{O}(n^3)$
+    \end{itemize}
+  \end{frame}
+  \section{Conclusion}
+  \begin{frame}{Guest speaker}
+    % ?
+  \end{frame}
+  \begin{frame}{Next Session}
+    Next session is on <Insert date and location>.\\
+
+    \texttt{<url to practice domjudge>}
   \end{frame}
 \end{document}

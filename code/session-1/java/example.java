@@ -1,6 +1,6 @@
 import java.io.*;
 
-class Problem {
+class ProblemCorrect {
   public static void main(String[] args) throws IOException {
     var input = new BufferedReader(new InputStreamReader(System.in));
     var cases = Integer.parseInt(input.readLine());
