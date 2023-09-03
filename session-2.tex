@@ -46,16 +46,16 @@
   \section{Team Tactics}
   \begin{frame}{General Tactics}
     \begin{itemize}
-      \item Know each-others strength and weaknesses like:
+      \item Know each other's strengths and weaknesses like:
       \begin{itemize}
-        \item type of problems (math, geometry, search, strings, graphs etc.)
+        \item types of problems (math, geometry, search, strings, graphs, etc.)
         \item debugging skills
         \item coding speed and accuracy
       \end{itemize}
-      \item parallelize
-      \item work on paper (e.g. pseudocode of flow diagram)
-      \item debug on paper
-      \item use cardboard dog principle when stuck
+      \item Parallelize
+      \item Work on paper (e.g. pseudocode or flow diagrams)
+      \item Debug on paper
+      \item Use cardboard dog principle when stuck
     \end{itemize}
   \end{frame}
   \begin{frame}{Team Tactics}
@@ -63,13 +63,13 @@
       \item<1-> Plot of the contest: 3 contestants, 1 computer
       \item<2-> Several tactics how to divide the computer efficiently
       \item<3-> Shuffle Tactic\begin{itemize}
-                                \item<4-> Rotate around who sites behind the pc
-                                \item<4-> After submitting a problem switch around if someone has a solution
+                                \item<4-> Rotate around who sits behind the pc
+                                \item<4-> After submitting a problem, switch around if someone has a solution
                                 \item<4-> Useful when programming in different languages
       \end{itemize}
       \item<3-> Designated Tactic\begin{itemize}
-                                   \item<5->Dedicated computer behind person
-                                   \item<5-> Other teams work on paper or read with on screen
+                                   \item<5->Dedicated person behind computer
+                                   \item<5-> Other team members work on paper or read along on screen
                                    \item<5-> Useful for teams with different disciplines
       \end{itemize}
       \item<3-> No best solution: Pick and mix what works best for your team
@@ -88,10 +88,10 @@
   \end{frame}
   \begin{frame}{Testing the envirionment}
     \begin{itemize}
-      \item<1-> Get to know the programming environment and it's quirks
+      \item<1-> Get to know the programming environment and its quirks
       \item <2-> Where is everything located: samples, documentation, important links
       \item <3-> Try all IDE and tools you \textit{might} use during the contest
-      \item <4-> Test out printing, if supported, from ide, command line and CSS
+      \item <4-> Test out printing, if supported, from IDE, command line, and CCS
       \item <5-> All files will be removed after the test session!
     \end{itemize}
   \end{frame}
@@ -105,7 +105,7 @@
         \item Time Limit Exceeded (TLE)
         \item Compiler Error
       \end{itemize}
-      \item Test Clarification requests
+      \item Test clarification requests
       \item Where are general clarifications displayed
     \end{itemize}
   \end{frame}
@@ -116,8 +116,8 @@
     \begin{itemize}
       \item Decide on a reading tactic
       \begin{itemize}
-        \item do we all start on reading the first problem?
-        \item Or do one person start on the end?
+        \item Do we all start reading the first problem?
+        \item Or does one person start at the end?
       \end{itemize}
       \item There are usually several ``simple'' problems in a set
       \item Be careful: the easiest problems usually contain some pitfall corner cases!
@@ -125,8 +125,8 @@
   \end{frame}
   \begin{frame}{Finding the easiest problems by results}
     \begin{itemize}
-      \item After 15 minutes of contest the first balloons will be handed out
-      \item Look at the scoreboard or to the balloons which problem is solved most % TODO: Add image of bottom scoreboard
+      \item After a few minutes of contest, the first balloons will be handed out
+      \item Check the scoreboard or balloon colours to see which problem is solved most % TODO: Add image of bottom scoreboard
       \item Or the problems page in DOMJudge %TODO: Add image of frequency graph of problems page
       \item \textbf{Warning}: The first problem solved is not guaranteed the easiest!
     \end{itemize}
@@ -136,20 +136,20 @@
     \begin{itemize}
       \item When the result is RTE:
       \begin{itemize}
-        \item Check for possible Null pointers, array overflows or integer overflow
+        \item Check for possible null pointers, array overflows, or integer overflow
         \item Check the input specification, don't forget 0 can do unexpected things
       \end{itemize}
       \item When the result is TLE:
       \begin{itemize}
         \item Check stop conditions, maybe an infinite loop?
-        \item Problem is too slow, try optimizing or thinking of a faster solution
+        \item Code is too slow, try optimizing or thinking of a faster solution
       \end{itemize}
       \item When then result is WA:
       \begin{itemize}
         \item Check for corner cases, don't forget zero
         \item Check correctness of algorithm
       \end{itemize}
-      \item \textbf{Warning}: A problem can be WA and TLE at the same time, but only 1 is reported back!
+      \item \textbf{Warning}: A problem can be WA and TLE at the same time, but only \emph{one} is reported back!
     \end{itemize}
   \end{frame}
 
@@ -170,10 +170,10 @@
     \begin{columns}
       \column{0.75\textwidth}
       \begin{itemize}
-        \item Observation 1: time limit of 1s so looking for $\mathcal{O}(n)$ solution
+        \item Observation 1: $n \leq 10^4$ and time limit of 1s so looking for $\mathcal{O}(n)$ solution
         \item Observation 2: Because $r_{i+1}-r_i \geq e$ every circle can be considered separately.
         \item 2 points are divided by angle $\alpha$
-        \item you can calculate $\alpha = 2 \arcsin{}(\frac{e}{2r})$
+        \item You can calculate $\alpha = 2 \arcsin{}(\frac{e}{2r})$
         \item The radius of a circle is $2\pi$ so the max number of points with distance $e$ can be calculated by\\
         $\left\lfloor\frac{2\pi}{\alpha}\right\rfloor \equiv \left\lfloor \frac{2\pi}{2 \arcsin{}(\frac{e}{2r})}\right\rfloor$
         \item Do this for every circle and sum the numbers
@@ -194,15 +194,16 @@
       \item Find the length of the side of a cube that contains all liquid.
     \end{itemize}
     Original problem written by the BAPC 2022 jury and licensed under \doclicenseLongNameRef.
+
     \doclicenseImage
   \end{frame}
   \begin{frame}{Lots of Liquid}
     \begin{itemize}
-      \item Observation: Number of inputs is $10^9$, so we are looking for a $\mathcal{O}(n)$ solution
+      \item Observation: $n \leq 10^5$, so we are looking for a $\mathcal{O}(n)$ solution
       \item The volume of a cube is $c^3$
       \item The length of cube with volume v is $\sqrt[3]{v}$
       \item Sum all volumes of the cubes and calculate the length of the cube
-      \item Print out \[\sqrt[3]{\sum_c^{i=0}c_i}\]
+      \item Print out \[\sqrt[3]{\sum_{i=1}^nc_i}\]
     \end{itemize}
   \end{frame}
   \begin{frame}[containsverbatim]{Lots of Liquid}
@@ -216,15 +217,18 @@
       \item  Given the profile of an island, find the point with the largest viewing angle of the sea.
     \end{itemize}
     Original problem written by the BAPC 2022 jury and licensed under \doclicenseLongNameRef.
+
     \doclicenseImage
   \end{frame}
   \begin{frame}{Bellevue}
     \begin{itemize}
       \item The answer is always an angle from the start or the end of the island to another point
       \item Calculate the angle from start and end to any other point
-      \item print out the solution.\\
-      \item alternatively calculate the convex hull
-      \item the best angle is from either the first and second point in the hull or the last and previous.
+      \item Print out the solution
+      \item Alternatively, calculate the convex hull
+      \begin{itemize}
+        \item The best angle is from either the first and second point in the hull or the last and previous
+      \end{itemize}
     \end{itemize}
   \end{frame}
   \begin{frame}[containsverbatim]{Bellevue}
@@ -237,6 +241,7 @@
       \item  Given a list of frequencies, normalize it so the perceived loudness is \[\frac{1}{n} \sum^n_{i=1}a_i^2=x\]
     \end{itemize}
     Original problem written by the BAPC 2022 jury and licensed under \doclicenseLongNameRef.
+
     \doclicenseImage
   \end{frame}
   \begin{frame}{Equalising Audio}
@@ -245,7 +250,7 @@
       \item First calculate the current perceived loudness \[x_{cur} = \frac{1}{n} \sum^n_{i=1}a_i^2\]
       \item Then print out the frequency reduced by $\sqrt{\frac{x}{x_{cur}}}$, since
       \[\frac{1}{n} \sum^n_{i=1}\left(\sqrt{\frac{x}{x_{cur}}}a_i\right)^2 = \frac{1}{n} \sum^n_{i=1}\left(\sqrt{\frac{x}{x_{cur}}}\right)^2a_i^2 = \frac{x}{x_{cur}}\cdot \frac{1}{n}\sum^n_{i=1}a_i^2 = \frac{x}{x_{cur}}\cdot x_{cur} = x\]
-      \item Pitfall: if the current perceived loudness ($x_{cur}$) is 0, then the result is \texttt{0 \ldots 0}
+      \item Pitfall: if the current perceived loudness ($x_{cur}$) is 0, the result is \texttt{0 0 \ldots{} 0}
     \end{itemize}
   \end{frame}
   \begin{frame}[containsverbatim]{ Equalising Audio}
@@ -259,15 +264,16 @@
       \item  Compute the minimum angle in degrees between two wind directions.
     \end{itemize}
     Original problem written by the BAPC 2022 jury and licensed under \doclicenseLongNameRef.
+
     \doclicenseImage
   \end{frame}
   \begin{frame}{Failing Flagship}
     \begin{itemize}
       \item Convert the letters to degrees $d_1$ and $d_2$
       \item Execute the algorithm as described in the problem by adding and subtracting a delta, starting at $45\deg$
-      \item Ever next letter represents a half of previous delta and either add or subtract it
+      \item Every next letter represents a half of previous delta and either add or subtract it
       \item Be careful of overflow with NW
-      \item print out the min($d_2-d_1, 360+d_1-d_2$)
+      \item Print out $\min(d_2-d_1, 360+d_1-d_2)$
     \end{itemize}
   \end{frame}
   \begin{frame}[containsverbatim]{Failing Flagship}
@@ -279,7 +285,7 @@
   \begin{frame}{Natural Order Sorting Algorithms}
     \begin{itemize}
       \item Sorting algorithms sort items in a natural order
-      \item Use build in sort as much of possible
+      \item Use built-in sort as much of possible
       \item C++17: \mintinline{c++}|std::sort()|
       \item Python: \mintinline{python}|list.sort()| or \mintinline{python}|sorted()|
       \item Java/Kotlin: \mintinline{java}|Arrays.sort()| or \mintinline{java}|Collections.sort()|
@@ -289,11 +295,11 @@
   \end{frame}
   \begin{frame}{Binary Search}
     \begin{itemize}
-      \item If the input is sorted or monotone increasing you can use binary search
-      \item start in the middle and half the search space based on if the value is to high or to low
+      \item If the input is sorted or monotonically increasing you can use binary search
+      \item Start in the middle and half the search space based on if the value is to high or to low
       \item Results in an $\mathcal{O}(\log{}n)$ algorithm
       \item C++17: \mintinline{c++}|std::binary_search()|
-      \item Python: \mintinline{python}|bisect()|
+      \item Python: \mintinline{python}|bisect.bisect()|
       \item Java/Kotlin: \mintinline{java}|Arrays.binarySearch()| or \mintinline{java}|Collections.binarySearch()|
       \item Implementing your own binary search is error prone!
     \end{itemize}
@@ -302,25 +308,25 @@
     \begin{itemize}
       \item Greedy algorithm to search a graph or tree
       \item Visit every node when it is discovered
-      \item Usually implemented by using a Stack datastructure
-      \item Use an array to keep track of discovered node
+      \item Usually implemented by using a stack data structure
+      \item Use an array to keep track of discovered nodes
       \item Example application is solving a maze
-      \item \textbf{Note}: Using a array is faster then using a Set
+      \item \textbf{Note}: Using a array is faster then using a set
     \end{itemize}
   \end{frame}
   \begin{frame}{Breath first search (BFS)}
     \begin{itemize}
       \item Simulair to DFS, but visits based on discovery order
-      \item Usually implemented by using a queue
-      \item Example application is flood filling to find a closest node
+      \item Usually implemented using a queue
+      \item Example application is flood-filling to find a closest node
     \end{itemize}
   \end{frame}
   \begin{frame}{Search using a heap}
     \begin{itemize}
       \item Search a space, selecting the next position by a condition
-      \item For Example: the closest node in Dijkstra's Shortest Path Algorithm
+      \item For example: the closest node in Dijkstra's Shortest Path Algorithm
       \item C++17: \mintinline{c++}|std::priority_queue|
-      \item Python: \mintinline{python}|heapify()| and \mintinline{python}|heapq|
+      \item Python: \mintinline{python}|heapq.heapify()|
       \item Java/Kotlin: \mintinline{java}|java.util.PriorityQueue()|
     \end{itemize}
   \end{frame}
@@ -444,7 +450,7 @@
   \end{frame}
   \begin{frame}{Problem: Bubble-bubble Sort: Naive Solution}
     \begin{itemize}
-      \item<1-> Observation: n is 2500, so the target is an $\mathcal{O}(n^2)$  solution
+      \item<1-> Observation: $n \leq 2500$, so the target is an $\mathcal{O}(n^2)$  solution
       \item<2-> Worst case is described in example 3:\\
       \begin{tabular}{|l|rrrrrr|}
         \hline
@@ -458,17 +464,17 @@
       \end{tabular}
       \item<3-> The lowest number is at the right most position and moves $k-1$ steps to the left, while total steps needed are $n-1$.
       \item<3-> So the worst case number of hours is $\left\lceil\frac{n-1}{k-1}\right\rceil$
-      \item<4-> The described algorithm is $\mathcal{O}\left(\frac{n-1}{k-1}n\right) \equiv \mathcal{O}(n^2)$
+      \item<4-> The described algorithm is $\mathcal{O}\left(\frac{n-1}{k-1}n\right) \simeq \mathcal{O}(n^2)$
     \end{itemize}
   \end{frame}
   \begin{frame}{Problem: Bubble-bubble Sort: Smart Solution}
     \begin{itemize}
-      \item<1-> First sort the list to determine the new position of each item $n_i$.
+      \item<1-> First sort the list to determine the new position of each item $a_i$.
       \item<1-> Warning: Be mindful of duplicates, link the indexes
-      \item<2-> then print out with $i$ is the index of the input
+      \item<2-> Then print out with $i$ is the index of the input
       \[\max D_i = \begin{cases}
-                     0 & \text{if } i \leq n_i \text{ (The item moves right)}\\
-                     \left\lceil\frac{i-n_i - 1}{k-1}\right\rceil & \text{(the item moves left)} \\
+                     0 & \text{if } i \leq a_i \text{ (The item moves right)}\\
+                     \left\lceil\frac{i-a_i - 1}{k-1}\right\rceil & \text{(the item moves left)} \\
       \end{cases}\]
       \item<3-> The complexity is $\mathcal{O}(n\log{}n)$ (sorting) + $\mathcal{O}(n)$ (finding the max $D_i$)
     \end{itemize}
@@ -489,7 +495,7 @@
   \begin{frame}{Problem: Imperfect Imperial Units}
     You are writing a paper for the Beta Astronomy Physics Conference about your recent discovery on grey holes.
     One of your collaborators has performed a huge number of measurements,which you would like to analyse in order to draw some conclusions.
-    The only problem is: the data is measured in a wide variety of units,and to your disgust, they appear to use a mix of the imperial and metric systems.
+    The only problem is: the data is measured in a wide variety of units, and to your disgust, they appear to use a mix of the imperial and metric systems.
     To simplify your analysis, you need to convert all these measurements into a different unit.
   \end{frame}
   \begin{frame}{Problem: Imperfect Imperial Units: Input}
@@ -587,7 +593,7 @@
       \item For every query use use a BFS/DFS to search for a path from the first unit to the requested node
       \item The problem specification ensures at most 1 path can exist, if no path is found, print out ``impossible''
       \item This will give a $\mathcal{O}(n\cdot q)$ complexity of the algorithm
-      \item this is fast enough.
+      \item This is fast enough.
     \end{itemize}
   \end{frame}
   \begin{frame}[containsverbatim]{ Problem: Imperfect Imperial Units: Solution}
@@ -595,13 +601,13 @@
   \end{frame}
   \begin{frame}{Imperfect Imperial Units: Improved Solution}
     \begin{itemize}
-      \item<1-> Our solution does calculations double, since the number of queries is significantly larger then number of units.
+      \item<1-> Our solution performs duplicate calculations, since the number of queries is significantly larger then number of units.
       \item<2-> You can cache found (sub)conversions for future queries
-      \item<3-> Or we can add some pre processioning, calculating the conversion unit for every possible unit reachable
+      \item<3-> Or we can add some preprocessioning, calculating the conversion unit for every possible unit reachable
       \item<3-> There are $\frac{n(n-1)}{2}$ combinations to calculate first ($\mathcal{O}(n^2)$)
-      \item<3-> Then for every query we can just lookup the factor and calculate the difference
+      \item<3-> Then, for every query, we can just look up the factor and calculate the difference
       \item<4-> Resulting in a faster $\mathcal{O}(n^2 + q)$
-      \item<5-> \textbf{Pitfall}: The result will fit in a double, but be careful with printing precision in C++.
+      \item<5-> \textbf{Pitfall}: The result will fit in a double, but be careful with printing precision in C++. Avoid \mintinline{c++}|std::cout << std::fixed| here!
     \end{itemize}
   \end{frame}
   \begin{frame}[containsverbatim]{ Problem: Imperfect Imperial Units: Improved Solution}
