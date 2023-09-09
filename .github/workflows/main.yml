@@ -18,11 +18,10 @@ jobs:
             session-3.tex
           latexmk_use_lualatex: true
           latexmk_shell_escape: true
-      - name: Upload PDF file
-        uses: actions/upload-artifact@v3
+      - name: Release
+        uses: softprops/action-gh-release@v1
         with:
-          name: PDF
-          path: |
+          files: |
             session-1.pdf
             session-2.pdf
             session-3.pdf
