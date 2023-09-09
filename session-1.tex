@@ -17,6 +17,7 @@
   modifier={by-sa},
   version={4.0},
 ]{doclicense}
+\usepackage{hyperref}
 \setsansfont{Fira Sans}
 \usemintedstyle{manni}
 \setminted{
@@ -26,11 +27,14 @@
 
 \title{DAPC 2023 Training Sessions\\Session 1}
 \author{Verwoerd}
+\date{September 11, 2023}
 
 
 % Document
 \begin{document}
   \maketitle
+
+
   \section{Introduction}
   \begin{frame}{Welcome}
     \begin{itemize}
@@ -76,17 +80,20 @@
     \begin{itemize}
       \item Creating a Team Reference Document
       \item Solutions to Sorting and Search Problems
-      \item Solving Interactive Problems and Randomized Input Problems
+      \item Solving Interactive Problems and Dynamic Programming
     \end{itemize}
   \end{frame}
   \begin{frame}{Session 4}
     \begin{itemize}
       \item Role of the coach on big contests
       \item Tips, tricks and common mistakes
+      \item Dealing with Randomized input
       \item Solutions to the Interactive Problems and Randomized Input Problems
       \item Solving the Hardest Problems
     \end{itemize}
   \end{frame}
+
+
   \section{Introduction to Programming Contests}
   \begin{frame}{What is a programming contest?}
     \begin{itemize}
@@ -130,6 +137,8 @@
     The DAPC is an official preliminary of the ICPC.
     \input{icpc-structure.tikz}
   \end{frame}
+
+
   \section{Reading a problem}
   \begin{frame}{Problem structure}
     A typical problem has the following structure
@@ -200,6 +209,8 @@
     \inputminted{kotlin}{code/session-1/kotlin/example-wrong.kt}
     \inputminted{python}{code/session-1/python/example.py}
   \end{frame}
+
+
   \section{Introduction to DOMJudge}
   \begin{frame}{Submitting the Solution}
     \begin{itemize}
@@ -263,6 +274,8 @@
   \begin{frame}{All solutions correct}
     \includegraphics[width=\linewidth]{images/session-1/domjudge-all-correct}
   \end{frame}
+
+
   \section{Estimating problem complexity}
   \begin{frame}{About time limit}
     \begin{itemize}
@@ -274,7 +287,7 @@
       \end{itemize}
       \item Low limit signifies fast algorithms, usually the use of formulas
       \item You can use the time limit to check your code on your local machine\\
-        \texttt{\$ time myjava ProblemA < worst-case.in}
+      \texttt{\$ time myjava ProblemA < worst-case.in}
     \end{itemize}
   \end{frame}
   \begin{frame}{About input size\footnote[1]{https://gcpc.nwerc.eu/primer.pdf}}
@@ -295,6 +308,7 @@
 
     \textbf{Warning}: This is not guaranteed to be always the case!
   \end{frame}
+
 
   \section{Solving an ad-hoc math problem}
   \begin{frame}{An other problem}
@@ -366,11 +380,11 @@
   \end{frame}
   \begin{frame}{Problem: Fastestest Function: Observations}
     \begin{itemize}
-      \item We receive the result of the following equations:\\$x=\frac{a_x}{b+a_x}$ and $y=\frac{a_y}{b+a_y}$\\ where $a_x$ is the time spent on \texttt{foo} for $x$ and $b$ is the remaining runtime of the program.
-      \item The factor we are looking for is calculated by $\frac{a_x}{a_y}$.
-      \item Rewrite the two equations to $a_x$ and $b_x$:\\$x=\frac{a_x}{b+a_x} \equiv bx+a_{x}x = a_x \equiv bx = a_x - a_{x}x \equiv bx = a_x(1-x) \equiv a_x = \frac{bx}{1-x}$\\ Resulting in $a_x=\frac{bx}{1-x}$ and $a_y=\frac{by}{1-y}$.
-      \item filling the factor formula:\\ $\frac{a_x}{a_y}= a_{x}a_{y}^{-1} = \frac{bx}{1-x}\cdot\frac{1-y}{by} = \frac{bx(1-y)}{(1-x)by} \equiv \frac{x(1-y)}{y(1-x)}$.
-      \item Calculate the factor by the formula, resulting in $\mathcal{O}(1)$ solution.
+      \item<1-> We receive the result of the following equations:\\$x=\frac{a_x}{b+a_x}$ and $y=\frac{a_y}{b+a_y}$\\ where $a_x$ is the time spent on \texttt{foo} for $x$ and $b$ is the remaining runtime of the program.
+      \item<2-> The factor we are looking for is calculated by $\frac{a_x}{a_y}$.
+      \item<3-> Rewrite the two equations to $a_x$ and $b_x$:\\$x=\frac{a_x}{b+a_x} \equiv bx+a_{x}x = a_x \equiv bx = a_x - a_{x}x \equiv bx = a_x(1-x) \equiv a_x = \frac{bx}{1-x}$\\ Resulting in $a_x=\frac{bx}{1-x}$ and $a_y=\frac{by}{1-y}$.
+      \item<4-> filling the factor formula:\\ $\frac{a_x}{a_y}= a_{x}a_{y}^{-1} = \frac{bx}{1-x}\cdot\frac{1-y}{by} = \frac{bx(1-y)}{(1-x)by} \equiv \frac{x(1-y)}{y(1-x)}$.
+      \item<4-> Calculate the factor by the formula, resulting in $\mathcal{O}(1)$ solution.
     \end{itemize}
   \end{frame}
   \begin{frame}[containsverbatim]{Solution in C++}
@@ -386,22 +400,26 @@
   \begin{frame}{Practising between sessions}
     \begin{itemize}
       \item All problems from DAPC 2022 and BAPC 2022 are available at \url{https://domjudge.ewi.tudelft.nl/}, self-register a team.
-      \item Next three sessions have their own contest
-      \item All sessions contain similar-themed problems\\ \begin{tabular}{ll}
-                                                             \hline
-                                                             Session 2 & Ad-hoc and Math solutions                                     \\
-                                                             Session 3 & Sort and Search                                               \\
-                                                             Session 4 & Interactive Problems, Dynamic programming, Divide and Conquer \\
-                                                             \hline
+      \item All problems are in the same contest ``DAPC-training''
+      \item All sessions contain similar-themed problems\\
+      \begin{tabular}{lll}
+        \hline
+        Session 2 & Yellow   & Ad-hoc and Math solutions                  \\
+        Session 3 & Green    & Sort and Search                            \\
+        Session 4 & Red+Blue & Interactive Problems, Dynamic programming, \\
+                  &          & Divide and Conquer                         \\
+        \hline
       \end{tabular}
     \end{itemize}
   \end{frame}
+
+
   \section{Meet and Greet}
   \begin{frame}{Looking for team?}
     If you are looking for a team, please raise your hand.
     If you want, you can give an introduction in the front, like experience and programming languages known.\\
-    Please don't forget to register at \texttt{wisv.ch/dapc}.\\\\
-    Next session is on <Insert date and location>.\\
+    Please don't forget to register at \url{wisv.ch/dapc}.\\\\
+    Next session is on Thursday 14th of September at 18:00.\\
 
     \url{https://domjudge.ewi.tudelft.nl/}
   \end{frame}
