@@ -1,0 +1,28 @@
+name: Build LaTeX document
+on:
+  push:
+    branches:
+     - 'master'
+jobs:
+  build_latex:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Git repository
+        uses: actions/checkout@v3
+      - name: Compile LaTeX document
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: |
+            session-1.tex
+            session-2.tex
+            session-3.tex
+          latexmk_use_lualatex: true
+          latexmk_shell_escape: true
+      - name: Upload PDF file
+        uses: actions/upload-artifact@v3
+        with:
+          name: PDF
+          path: |
+            session-1.pdf
+            session-2.pdf
+            session-3.pdf
