@@ -3,6 +3,7 @@
 \usetheme{metropolis}
 \title{DAPC 2023 Training Sessions\\Session 3}
 \author{Verwoerd}
+\date{September 18, 2023}
 
 % Packages
 \usepackage{amsmath}
@@ -16,6 +17,7 @@
   modifier={by-sa},
   version={4.0},
 ]{doclicense}
+\usepackage{hyperref}
 \setsansfont{Fira Sans}
 \usemintedstyle{manni}
 \setminted{
@@ -33,6 +35,7 @@
       \item Solving interactive problems
       \item Solving Dynamic Programming Problems
     \end{itemize}
+    Slides are available on \url{https://chipcie.wisv.ch/} in the training news post.
     \doclicenseThis
   \end{frame}
 
@@ -42,7 +45,7 @@
     \begin{itemize}
       \item During the DAPC you may bring any analogue reference material you want
       \item Starting from the BAPC, you may only bring limited reference material
-          (= same rules as World Finals)
+      (= same rules as World Finals)
       \item This reference is called the Team Reference Document (TRD)
       \item Sometimes the old term Team Contest Reference (TCR) is used
     \end{itemize}
@@ -144,12 +147,12 @@
 
   \begin{frame}{Abbreviated Aliases}
     \begin{itemize}
-      \item Observation: $n\cdot l \leq 10^7$, so we are aiming for $\mathcal{O}(l \cdot n\log{}n)$
-      \item Comparing every username with all other usernames is $\mathcal{O}(n^2)$, which is too slow
-      \item We only need to compare the two usernames where the prefix is most similar\\
+      \item<+-> Observation: $n\cdot l \leq 10^7$, so we are aiming for $\mathcal{O}(n\log{}n)$
+      \item<+-> Comparing every username with all other usernames is $\mathcal{O}(n^2)$, which is too slow
+      \item<+-> We only need to compare the two usernames where the prefix is most similar\\
       \texttt{james} is closest to \texttt{jacob} and \texttt{janos}, there is no other username that will increase the prefix
-      \item If we sort the list, we only have to compare with the username before and after
-      \item Alternatively, build a compressed Trie, and for each leaf, count the distance to the root
+      \item<+-> If we sort the list, we only have to compare with the username before and after
+      \item<+-> Alternatively, build a compressed Trie, and for each leaf, count the distance to the root
     \end{itemize}
   \end{frame}
   \begin{frame}[containsverbatim]{Abbreviated Aliases}
@@ -169,12 +172,12 @@
 
   \begin{frame}{Dimensional Debugging}
     \begin{itemize}
-      \item Observation: $n \leq 10^3$, so we are aiming for an $\mathcal{O}(n^2)$ algorithm.
-      \item We can verify all algorithms with $L = \varphi_0$
-      \item Add those algorithms to verified algorithms, then find any unverified where $H_j \leq L_i$
-      \item In this way you can create a graph between the different algorithms.
-      \item Use a flood fill by BFS/DFS to count the number of algorithms you can reach.
-      \item This results in an $\mathcal{O}(n^2)$ algorithm.
+      \item<+-> Observation: $n \leq 10^3$, so we are aiming for an $\mathcal{O}(n^2)$ algorithm.
+      \item<+-> We can verify all algorithms with $L = \varphi_0$
+      \item<+-> Add those algorithms to verified algorithms, then find any unverified where $H_j \leq L_i$
+      \item<+-> In this way you can create a graph between the different algorithms.
+      \item<+-> Use a flood fill by BFS/DFS to count the number of algorithms you can reach.
+      \item<+-> This results in an $\mathcal{O}(n^2)$ algorithm.
     \end{itemize}
   \end{frame}
   \begin{frame}[containsverbatim]{Dimensional Debugging}
@@ -194,13 +197,13 @@
   \end{frame}
   \begin{frame}{Extended Braille}
     \begin{itemize}
-      \item Observation 1: time limit of 8s is due to high input size
-      \item Observation 2: at most $10^6$ dots, so we are looking for $\mathcal{O}(n\log{}n)$
-      \item Per Braille character, sort the dots on $x$ then $y$
-      \item Move the first ordered dot to $(0, 0)$ by subtracting the first point coordinate from all the dots\\
+      \item<+-> Observation 1: time limit of 8s is due to high input size
+      \item<+-> Observation 2: at most $10^6$ dots, so we are looking for $\mathcal{O}(n\log{}n)$
+      \item<+-> Per Braille character, sort the dots on $x$ then $y$
+      \item<+-> Move the first ordered dot to $(0, 0)$ by subtracting the first point coordinate from all the dots\\
       \quad$\forall_{i=1}^m (x'_i, y'_i) = (x_i - x_1, y_i - y_1)$
-      \item Add the transposed characters to a HashMap and count the unique keys
-      \item Resulting a $\mathcal{O}(n\log{}n)$ or amortized $\mathcal{O}(n)$
+      \item<+-> Add the transposed characters to a HashMap or Set and count the unique keys
+      \item<+-> Resulting a $\mathcal{O}(n\log{}n)$ or amortized $\mathcal{O}(n)$
     \end{itemize}
   \end{frame}
   \begin{frame}[containsverbatim]{Extended Braille}
@@ -219,15 +222,15 @@
   \end{frame}
   \begin{frame}{Knitting Pattern}
     \begin{itemize}
-      \item Observation: $|p| \leq 10^6$, so we are aiming for a $\mathcal{O}(|p|\log{}|p|)$
-      \item For gap between colours you have 2 options
+      \item<+-> Observation: $|p| \leq 10^6$, so we are aiming for a $\mathcal{O}(|p|\log{}|p|)$
+      \item<+-> For gap between colours you have 2 options
       \begin{enumerate}
-        \item let the strand continue
-        \item stop the strand and start again
+        \item<+-> let the strand continue
+        \item<+-> stop the strand and start again
       \end{enumerate}
-      \item For every colour, we have to calculate for every gap: \[\min(c_{stop}+c_{start}, gap_{size}\cdot c_{unused})\]
-      \item Calculate the total cost for each colour and sum it together
-      \item The complexity is $\mathcal{O}(|w|\cdot |p|)$, or in a single pass over $p$ with creative bookkeeping
+      \item<+-> For every colour, we have to calculate for every gap: \[\min(c_{stop}+c_{start}, gap_{size}\cdot c_{unused})\]
+      \item<+-> Calculate the total cost for each colour and sum it together
+      \item<+-> The complexity is $\mathcal{O}(|w|\cdot |p|)$, or in a single pass over $p$ with creative bookkeeping
     \end{itemize}
   \end{frame}
   \begin{frame}[containsverbatim]{Knitting Pattern}
@@ -246,11 +249,11 @@
   \end{frame}
   \begin{frame}{Kiosk Construction}
     \begin{itemize}
-      \item The shortest path for every kiosk position to every other plot can be found by using DFS/BFS
-      \item Then find the kiosk(s) that can reach all plot and minimize the maximum distance
-      \item Doing $n^2$ DFS/BFS for every kiosk results in a $\mathcal{O}(n^3)$ solution and receives a TLE
-      \item You an optimize do to some preprocessing, calculate the distance from every plot to every kiosk position, storing intermediate results
-      \item This optimization results in a $\mathcal{O}(n^2)$ solution
+      \item<+-> The shortest path for every kiosk position to every other plot can be found by using DFS/BFS
+      \item<+-> Then find the kiosk(s) that can reach all plot and minimize the maximum distance
+      \item<+-> Doing $n^2$ DFS/BFS for every kiosk results in a $\mathcal{O}(n^3)$ solution and receives a TLE
+      \item<+-> You an optimize do to some preprocessing, calculate the distance from every plot to every kiosk position, storing intermediate results
+      \item<+-> This optimization results in a $\mathcal{O}(n^2)$ solution
     \end{itemize}
   \end{frame}
   \begin{frame}[containsverbatim]{Kiosk Construction}
@@ -464,17 +467,17 @@ fun fibonacci(i: Long): Long = when(i) {
       \column{0.7\textwidth}
       \begin{itemize}
         \item Head of jury for BAPC since 2022
-          \begin{itemize}
-            \item FPC jury member since 2018
-            \item BAPC jury member since 2020
-            \item NWERC jury member since 2022
-          \end{itemize}
+        \begin{itemize}
+          \item FPC jury member since 2018
+          \item BAPC jury member since 2020
+          \item NWERC jury member since 2022
+        \end{itemize}
         \item BAPC/NWERC particpant (best result: 24th)
-          \begin{itemize}
-            \item 2016: ``Tie Limit Exceeded''
-            \item 2017: ``class RubberDuck extends Throwable \{\}''
-            \item 2018: ``$\Omega(\raisebox{1.5ex-\height}{\includegraphics[width=1em]{images/session-3/duck-emoji.png}}^n)$''
-          \end{itemize}
+        \begin{itemize}
+          \item 2016: ``Tie Limit Exceeded''
+          \item 2017: ``class RubberDuck extends Throwable \{\}''
+          \item 2018: ``$\Omega(\raisebox{1.5ex-\height}{\includegraphics[width=1em]{images/session-3/duck-emoji.png}}^n)$''
+        \end{itemize}
         \item BSc+MSc Computer Science @ TU Delft
         \item Second-oldest member of CHipCie
       \end{itemize}
@@ -485,7 +488,7 @@ fun fibonacci(i: Long): Long = when(i) {
     \end{columns}
   \end{frame}
   \newcommand{\jurytimeline}[1]{
-    %\vskip 0pt plus 1filll minus 0pt
+  %\vskip 0pt plus 1filll minus 0pt
     \vfill
     \vfill
     \begin{tikzpicture}[scale=0.138]
@@ -501,22 +504,22 @@ fun fibonacci(i: Long): Long = when(i) {
       \item About a dozen jury members
       \item Tens of problem ideas
       \item A few months of time
-        \begin{itemize}
-          \item Meeting every two weeks
-        \end{itemize}
+      \begin{itemize}
+        \item Meeting every two weeks
+      \end{itemize}
     \end{itemize}
     \jurytimeline{5}
   \end{frame}
   \begin{frame}{Problem Selection}
     \begin{itemize}
       \item Label problems submitted to Call for Problems
-        \begin{itemize}
-          \item How much we like the problem
-          \item Difficulty rating
-          \item Categories (math, geometry, graph, \dots)
-        \end{itemize}
+      \begin{itemize}
+        \item How much we like the problem
+        \item Difficulty rating
+        \item Categories (math, geometry, graph, \dots)
+      \end{itemize}
       \item Select problems that we like best, \\
-        \quad{}with spread in difficulty and categories
+      \quad{}with spread in difficulty and categories
     \end{itemize}
     \jurytimeline{15}
   \end{frame}
@@ -545,13 +548,13 @@ fun fibonacci(i: Long): Long = when(i) {
   \begin{frame}{Trying to Break Stuff}
     \begin{itemize}
       \item Constraints checking
-        \begin{itemize}
-          \item Minimal/maximal input
-        \end{itemize}
+      \begin{itemize}
+        \item Minimal/maximal input
+      \end{itemize}
       \item Fuzzing
-        \begin{itemize}
-          \item Generate more random test data from existing scripts
-        \end{itemize}
+      \begin{itemize}
+        \item Generate more random test data from existing scripts
+      \end{itemize}
       \item Write submissions that should be wrong/too slow
       \item Invite proof readers/solvers
     \end{itemize}
@@ -561,10 +564,10 @@ fun fibonacci(i: Long): Long = when(i) {
     \begin{itemize}
       \item Continuous Integration
       \item Upload problems to DOMjudge
-        \begin{itemize}
-          \item Local machine
-          \item Test in Drebbelweg with Maarten (systems Maarten)
-        \end{itemize}
+      \begin{itemize}
+        \item Local machine
+        \item Test in Drebbelweg with Maarten (systems Maarten)
+      \end{itemize}
       \item Check time limits on contest hardware
     \end{itemize}
     \jurytimeline{55}
@@ -573,25 +576,25 @@ fun fibonacci(i: Long): Long = when(i) {
     \begin{itemize}
       \item Waiting for the first submissions to come in
       \item Taking guesses
-        \begin{itemize}
-          \item Which problem would be solved first, and after how many minutes?
-          \item What will be the order of most-solved to least-solved?
-        \end{itemize}
+      \begin{itemize}
+        \item Which problem would be solved first, and after how many minutes?
+        \item What will be the order of most-solved to least-solved?
+      \end{itemize}
     \end{itemize}
     \jurytimeline{60}
   \end{frame}
   \begin{frame}{During the Contest}
     \begin{itemize}
       \item Check incoming submissions
-        \begin{itemize}
-          \item Are they correctly marked as AC/TLE/WA/\dots?
-          \item Are they using clever solutions that we didn't think of?
-        \end{itemize}
+      \begin{itemize}
+        \item Are they correctly marked as AC/TLE/WA/\dots?
+        \item Are they using clever solutions that we didn't think of?
+      \end{itemize}
       \item Answer incoming clarification requests
-        \begin{itemize}
-          \item The dreadful ``\emph{No comment.}'' and \\
-            ``\emph{Please read the problem statement carefully.}''
-        \end{itemize}
+      \begin{itemize}
+        \item The dreadful ``\emph{No comment.}'' and \\
+        ``\emph{Please read the problem statement carefully.}''
+      \end{itemize}
       \item Add common mistakes to solution slides
     \end{itemize}
     \jurytimeline{75}
@@ -606,7 +609,7 @@ fun fibonacci(i: Long): Long = when(i) {
   \begin{frame}{After the Contest}
     \begin{itemize}
       \item Generate solve stats \\[0.5em]
-        \includegraphics[width=0.8\textwidth]{images/session-3/solve-stats.png}
+      \includegraphics[width=0.8\textwidth]{images/session-3/solve-stats.png}
       \item Present solutions
     \end{itemize}
 
@@ -621,6 +624,7 @@ fun fibonacci(i: Long): Long = when(i) {
 
   \begin{frame}{Next Session}
     Next session is on Thursday the 21st of September.\\
+    Guest Speaker: Jeroen op de Beek and Leon van der Waal from Segment goes BRRRR about geometry problems.
 
     \url{https://domjudge.ewi.tudelft.nl/}
   \end{frame}
