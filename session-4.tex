@@ -1,0 +1,176 @@
+%! Author = verwoerd
+%! Date = 16-9-2023
+% Preamble
+\documentclass[11pt,pdf, aspectratio=169]{beamer}
+\usetheme{metropolis}
+\title{DAPC 2023 Training Sessions\\Session 4}
+\author{Verwoerd}
+\date{September 21, 2003}
+
+% Packages
+\usepackage{amsmath}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{minted}
+\usepackage[
+  type={CC},
+  modifier={by-sa},
+  version={4.0},
+]{doclicense}
+\setsansfont{Fira Sans}
+\usemintedstyle{manni}
+\setminted{
+  fontsize=\footnotesize,linenos,frame=lines, framesep=2mm
+}
+\usetikzlibrary{angles,quotes,graphs, graphdrawing,positioning}
+\usegdlibrary {layered}
+
+\begin{document}
+  \maketitle
+  \begin{frame}{Session 4}
+    \begin{itemize}
+      \item Role of the coach on big contests
+      \item Tips, tricks and common mistakes
+      \item Solutions to the Interactive Problems and Dynamic Programming Problems
+      \item Dealing with randomization
+      \item Solutions the hardest problems
+    \end{itemize}
+    \doclicenseThis
+  \end{frame}
+
+
+  \section{Role of the coach}
+
+
+  \section{Tips, tricks and common mistakes}
+
+
+  \section{Solutions to the Interactive Problems and Dynamic Programming Problems}
+  \begin{frame}{Cookbook Composition}
+    \begin{itemize}
+      \item Source BAPC Preliminaries 2022
+      \item Time limit: 2s
+      \item Given a list of recipes, print the order the recipes by accessibility (lowest $\frac{beginner\text{ }time}{expert\text{ }time}$ first).
+
+    \end{itemize}
+    Original problem written by the BAPC 2022 jury and licensed under \doclicenseLongNameRef.
+
+    \doclicenseImage
+  \end{frame}
+
+  \begin{frame}{Cookbook Composition}
+    \begin{itemize}
+      \item Observation: $n\cdot s \leq 2.5\cdot10^4$, so we are aiming for a $\mathcal{O}(n\cdot s \log{n\cdot s})$
+      \item Observation: Steps are in order, dependencies are always declared first
+      \item The beginner time is trivial to calculate, the sum of the time of all steps
+      \item The expert time can be defined as a DP relation\\
+      \[\text{time}_s = \begin{cases}
+                          t & \text{if no dependencies are given}\\
+                          t + \max\limits_{steps}^{i=0} time_i & \\
+      \end{cases}\]
+      \item This can be calculated in linear time by processing the steps one by one, where the expert time is the time of the last step.
+      \item Then sort the recipes based on $\frac{beginner\text{ }time}{expert\text{ }time}$ and print out the result
+      \item This results in a $\mathcal{O}(n\cdot s + n \log n)$ solution
+    \end{itemize}
+  \end{frame}
+  \begin{frame}[containsverbatim]{Cookbook Composition}
+    \inputminted{python}{code/session-4/dapc-c.py}
+  \end{frame}
+  \begin{frame}{Guessing Primes}
+    \begin{itemize}
+      \item Source BAPC Preliminaries 2022
+      \item Interactive Problem
+      \item Time limit: 10s
+      \item Guess the hidden 5-digit prime in at most 6 guesses, i.e., play Primel.
+
+    \end{itemize}
+    Original problem written by the BAPC 2022 jury and licensed under \doclicenseLongNameRef.
+
+    \doclicenseImage
+  \end{frame}
+  \begin{frame}{Guessing Primes}
+    \begin{itemize}
+      \item There are 8363 primes between 10000 and 99999, can be generated within the timelimit of 10s
+      \item Primality can be checked an odd number $n$ can not be divided by $(3..\lfloor\sqrt{n}\rfloor)$
+      \item Selecting a random prime and use the rules to generate the next guess will take on average 7 guesses.
+      \item The reason is when only one digit is known, to many guesses needed for the other 4
+      \item So your first 2 guesses should all contain different digits, like 24683 and 10597
+      \item Use the digits to generate the next guesses
+      \item This is guaranteed you can do this in 6 guesses
+    \end{itemize}
+  \end{frame}
+  \begin{frame}[containsverbatim]{Guessing Primes(1)}
+    \inputminted[fontsize=\tiny]{python}{code/session-4/dapc-g-1.py}
+  \end{frame}
+  \begin{frame}[containsverbatim]{Guessing Primes(2)}
+    \inputminted[fontsize=\tiny]{python}{code/session-4/dapc-g-2.py}
+  \end{frame}
+  \begin{frame}{Dividing DNA}
+    \begin{itemize}
+      \item Source BAPC 2022
+      \item Interactive Problem
+      \item Time limit: 2s
+      \item  Given a set of forbidden (present) intervals, partition $[0,n)$ into as many disjoint (absent) intervals as possible with at most $2n$ queries.
+
+    \end{itemize}
+    Original problem written by the BAPC 2022 jury and licensed under \doclicenseLongNameRef.
+
+    \doclicenseImage
+  \end{frame}
+  \begin{frame}{Dividing DNA}
+    \begin{itemize}
+      \item If an interval is forbidden, then all shorter intervals are forbidden too.
+      \item An absent interval is just one longer then a forbidden interval.
+      \item A greedy solution works here
+      \item start with $[0,1)$ and keep growing until an absent interval is found
+      \item Then start at the last exclusive boundary a new boundary and continue until the end is reached.
+      \item \includegraphics[width=.8\linewidth]{images/session-4/bapc-d}
+      \item The result is the number of intervals with $n$ queries
+    \end{itemize}
+
+  \end{frame}
+  \begin{frame}[containsverbatim]{Dividing DNA}
+    \inputminted{python}{code/session-4/bapc-d.py}
+  \end{frame}
+
+  \begin{frame}{Jaged skylines}
+    \begin{itemize}
+      \item Source BAPC 2022
+      \item Interactive Problem
+      \item Time limit: 4s
+      \item  Given $w \leq 10000$ integers $0 \leq h_i \leq 10^{18}$ , find the maximum in at most 12000 queries: ``Is integer $h_i$ less than y?''
+    \end{itemize}
+    Original problem written by the BAPC 2022 jury and licensed under \doclicenseLongNameRef.
+
+    \doclicenseImage
+  \end{frame}
+  \begin{frame}{Jaged skylines}
+    \begin{itemize}
+      \item For every column we can binary search the highest tile
+      \item This is 5000 queries, so too much
+      \item Rather than start in the middle, we can check if it is higher than the best found
+      \item and then binary search only found
+      \item Worst case: the maximum increases with every column
+      \item Randomize the order, the change that an item is higher is $\ln(w)$
+      \item Resulting in number of queries of $w+\ln(w)\cdot \log(h)$
+      \item Note that this a Monte Carlo estimate, which was manually monitored by the jury
+    \end{itemize}
+  \end{frame}
+  \begin{frame}[containsverbatim]{Dividing DNA}
+    \inputminted{python}{code/session-4/bapc-j.py}
+  \end{frame}
+
+  \section{Dealing with randomization}
+
+
+  \section{Solving the Hardest Problems}
+
+
+  \section{Guest Speaker}
+
+
+  \section{Conclussion}
+
+\end{document}
