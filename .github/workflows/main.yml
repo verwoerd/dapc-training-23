@@ -13,7 +13,7 @@ jobs:
         id: tag
         uses: mathieudutour/github-tag-action@v6.1
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}        
+          github_token: ${{ secrets.GITHUB_TOKEN }}
       - name: Compile LaTeX document
         uses: xu-cheng/latex-action@v3
         with:
@@ -21,6 +21,7 @@ jobs:
             session-1.tex
             session-2.tex
             session-3.tex
+            session-4.tex
           latexmk_use_lualatex: true
           latexmk_shell_escape: true
       - name: Release
@@ -31,3 +32,4 @@ jobs:
             session-1.pdf
             session-2.pdf
             session-3.pdf
+            session-4.pdf
