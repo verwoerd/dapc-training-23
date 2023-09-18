@@ -305,36 +305,6 @@
 
 
   \section{Solutions to the Interactive Problems and Dynamic Programming Problems}
-  \begin{frame}{Cookbook Composition}
-    \begin{itemize}
-      \item Source BAPC Preliminaries 2022
-      \item Time limit: 2s
-      \item Given a list of recipes, print the order the recipes by accessibility (lowest $\frac{beginner\text{ }time}{expert\text{ }time}$ first).
-
-    \end{itemize}
-    Original problem written by the BAPC 2022 jury and licensed under \doclicenseLongNameRef.
-
-    \doclicenseImage
-  \end{frame}
-
-  \begin{frame}{Cookbook Composition}
-    \begin{itemize}
-      \item Observation: $n\cdot s \leq 2.5\cdot10^4$, so we are aiming for a $\mathcal{O}(n\cdot s \log{n\cdot s})$
-      \item Observation: Steps are in order, dependencies are always declared first
-      \item The beginner time is trivial to calculate, the sum of the time of all steps
-      \item The expert time can be defined as a DP relation\\
-      \[\text{time}_s = \begin{cases}
-                          t & \text{if no dependencies are given}\\
-                          t + \max\limits_{steps}^{i=0} time_i & \\
-      \end{cases}\]
-      \item This can be calculated in linear time by processing the steps one by one, where the expert time is the time of the last step.
-      \item Then sort the recipes based on $\frac{beginner\text{ }time}{expert\text{ }time}$ and print out the result
-      \item This results in a $\mathcal{O}(n\cdot s + n \log n)$ solution
-    \end{itemize}
-  \end{frame}
-  \begin{frame}[containsverbatim]{Cookbook Composition}
-    \inputminted{python}{code/session-4/dapc-c.py}
-  \end{frame}
   \begin{frame}{Guessing Primes}
     \begin{itemize}
       \item Source BAPC Preliminaries 2022
