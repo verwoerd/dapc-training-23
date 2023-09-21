@@ -45,7 +45,7 @@
   \section{Role of the coach}
   \begin{frame}{What is a coach?}
     \begin{itemize}
-      \item The coach is the contact person for the contest organisation
+      \item The coach is the contact person for the contest organization.
       \item Usually a faculty member, local contest organizer or student
       \item The coach doesn't participate in the contest
     \end{itemize}
@@ -80,12 +80,12 @@
       \item Calling functions is more expensive than you might think!
       \item For Java, \texttt{BufferedReader} is faster than \texttt{Scanner}!
       \item Don’t forget to eat and drink.
-      Programming contest is a sport, and you need to be energised and focussed for 5 hours.
+      Programming contest is a sport, and you need to be energized and focussed for 5 hours.
     \end{itemize}
   \end{frame}
   \begin{frame}{Training your self}
     \begin{itemize}
-      \item If you don't make the World Finals, you can train for next years event
+      \item If you don't make the World Finals, you can train for next year's event
       \item Many online problem-solving websites:
       \begin{itemize}
         \item December: Advent of code (\url{https://adventofcode.com/})
@@ -93,7 +93,7 @@
         \item Year round: Kattis Problem Archive (\url{https://open.kattis.com/})
         \item Year round: Codeforces (\url{https://codeforces.com/})
       \end{itemize}
-      \item Several books available, listen on \url{https://chipcie.wisv.ch/resources}
+      \item Several books available, listed on \url{https://chipcie.wisv.ch/resources}
     \end{itemize}
   \end{frame}
 
@@ -155,7 +155,7 @@
         \frac{2 + \sqrt {2} + 5 \ln\left(1 + \sqrt {2}\right)}{15} \approx 0.5214
       \]
       \item This is referred to as the mean line segment length, several properties can be derived from this.
-      \item This can be a subject to include in your Team Reference Document, but this might be to obscure.
+      \item This can be a subject to include in your Team Reference Document, but this might be too obscure.
     \end{itemize}
   \end{frame}
   \begin{frame}{Formulas for Uniform Random Points} % Source: https://en.wikipedia.org/wiki/Mean_line_segment_length#Line_segment and https://math.stackexchange.com/questions/1999612/average-minimum-distance-between-n-points-generate-i-i-d-with-uniform-dist/2001026#2001026
@@ -208,7 +208,7 @@
     The input consists of:
     \begin{itemize}
       \item One line with an integer $n$, the number of planets.
-      \item $n$ lines, each with three integers $x$, $y$, and $z$
+      \item $n$ lines, each with three integers $x$, $y$ and $z$
       ($0 \leq x, y, z < 10^9$), the coordinates of one of the planets.
     \end{itemize}
     Your submissions will be run on exactly $100$ test cases, all of which will have $n = 10^5$.
@@ -250,34 +250,34 @@
   \end{frame}
   \begin{frame}{Problem: Lowest Latency: Observations}
     \begin{itemize}
-      \item The input size is $10^5$, so we are looking for $\mathcal{O}(n \log^2 n)$ solution
-      \item The timelimit is high for high input IO
-      \item Since the input is Independent Uniform Random, the average line length will be $0.661707\cdot 10^9 \approx 6.6\cdot 10^8 $ but the minimum will be lower.
-      \item Expand the minimum distance for n points on a line to three dimensions \\
+      \item<+-> The input size is $10^5$, so we are looking for $\mathcal{O}(n \log^2 n)$ solution
+      \item<+-> The timelimit is high for high input IO
+      \item<+-> Since the input is Independent Uniform Random, the average line length will be $0.661707\cdot 10^9 \approx 6.6\cdot 10^8 $ but the minimum will be lower.
+      \item<+-> Expand the minimum distance for n points on a line to three dimensions \\
       \[
         \left( \frac{d}{n^2-1} \right)^3 => \left(\frac{10^9}{(10^5)^2-1}\right)^3 \approx 10^6
       \]
-      \item So the average length will be less then $10^6$.\footnote{ Or at least, almost always ;-)}
+      \item<+-> So the average length will be less then $10^6$.\footnote{ Or at least, almost always ;-)}
     \end{itemize}
   \end{frame}
   \begin{frame}{Problem: Fastestest Function: Observations}
     \begin{itemize}
-      \item The Euclidean distance is calculated by \\
+      \item<+-> The Euclidean distance is calculated by \\
       \[ d(a,b) = \sqrt {(a_x - b_x)^2 + (a_y - b_y)^2 + (a_z-b_z)^2}\]
-      \item There are three common soltions to solve this problem
+      \item<+-> There are three common solutions to solve this problem
       \begin{enumerate}
-        \item Divide and conquer
-        \item Local brute force using the random property
-        \item Sorted Brutefore
+        \item<+-> Divide and conquer
+        \item<+-> Local brute force using the random property
+        \item<+-> Sorted Bruteforce
       \end{enumerate}
     \end{itemize}
   \end{frame}
   \begin{frame}{Problem: Lowest Latency: Solution 1}
     \begin{itemize}
-      \item Sort the points by the x-value, use y and z for tiebreakers
-      \item split the points in half and solve the halfs recursivly
-      \item once only two points are in a group, calculate and return the distance
-      \item once both groups have their distances calculated select the lowest distance
+      \item Sort the points by the x-value, use y and z for tiebreakers.
+      \item Split the points in half and solve the halfs recursively
+      \item Once only two points are in a group, calculate and return the distance
+      \item Once both groups have their distances calculated, select the lowest distance
       \item Check with the points in the other groups within this distance if they create a shorter distance in the overlap and return the distance.
       \item The complexity of the $\mathcal{O}(n \log n)$
     \end{itemize}
@@ -319,13 +319,13 @@
   \end{frame}
   \begin{frame}{Guessing Primes}
     \begin{itemize}
-      \item There are 8363 primes between 10000 and 99999, can be generated within the timelimit of 10s
-      \item Primality can be checked an odd number $n$ can not be divided by $(3..\lfloor\sqrt{n}\rfloor)$
-      \item Selecting a random prime and use the rules to generate the next guess will take on average 7 guesses.
-      \item The reason is when only one digit is known, to many guesses needed for the other 4
-      \item So your first 2 guesses should all contain different digits, like 24683 and 10597
-      \item Use the digits to generate the next guesses
-      \item This is guaranteed you can do this in 6 guesses
+      \item<+-> There are 8363 primes between 10000 and 99999, can be generated within the time limit of 10s
+      \item<+-> Primality can be checked an odd number $n$ cannot be divided by $(3..\lfloor\sqrt{n}\rfloor)$
+      \item<+-> Selecting a random prime, and using the rules to generate the next guess will take on average seven guesses.
+      \item<+-> The reason is when only one digit is known, to many guesses needed for the other 4
+      \item<+-> So your first 2 guesses should all contain different digits, like 24683 and 10597
+      \item<+-> Use the digits to generate the next guesses
+      \item<+-> This is guaranteed you can do this in 6 guesses
     \end{itemize}
   \end{frame}
   \begin{frame}[containsverbatim]{Guessing Primes(1)}
@@ -348,13 +348,13 @@
   \end{frame}
   \begin{frame}{Dividing DNA}
     \begin{itemize}
-      \item If an interval is forbidden, then all shorter intervals are forbidden too.
-      \item An absent interval is just one longer then a forbidden interval.
-      \item A greedy solution works here
-      \item start with $[0,1)$ and keep growing until an absent interval is found
-      \item Then start at the last exclusive boundary a new boundary and continue until the end is reached.
-      \item \includegraphics[width=.8\linewidth]{images/session-4/bapc-d}
-      \item The result is the number of intervals with $n$ queries
+      \item<+-> If an interval is forbidden, then all shorter intervals are forbidden too.
+      \item<+-> An absent interval is just one longer then a forbidden interval.
+      \item<+-> A greedy solution works here
+      \item<+-> Start with $[0,1)$ and keep growing until an absent interval is found
+      \item<+-> Then start at the last exclusive boundary a new boundary and continue until the end is reached.
+      \item<+-> \includegraphics[width=.8\linewidth]{images/session-4/bapc-d}
+      \item<+-> The result is the number of intervals with $n$ queries
     \end{itemize}
 
   \end{frame}
@@ -375,14 +375,14 @@
   \end{frame}
   \begin{frame}{Jaged skylines}
     \begin{itemize}
-      \item For every column we can binary search the highest tile
-      \item This is 5000 queries, so too much
-      \item Rather than start in the middle, we can check if it is higher than the best found
-      \item and then binary search only found
-      \item Worst case: the maximum increases with every column
-      \item Randomize the order, the change that an item is higher is $\ln(w)$
-      \item Resulting in number of queries of $w+\ln(w)\cdot \log(h)$
-      \item Note that this a Monte Carlo estimate, which was manually monitored by the jury
+      \item<+-> For every column we can binary search the highest tile
+      \item<+-> This is 5000 queries, so too much
+      \item<+-> Rather than start in the middle, we can check if it is higher than the best found
+      \item<+-> and then binary search only found
+      \item<+-> Worst case: the maximum increases with every column
+      \item<+-> Randomize the order, the change that an item is higher is $\ln(w)$
+      \item<+-> Resulting in number of queries of $w+\ln(w)\cdot \log(h)$
+      \item<+-> Note that this a Monte Carlo estimate, which was manually monitored by the jury
     \end{itemize}
   \end{frame}
   \begin{frame}[containsverbatim]{Dividing DNA}
@@ -410,9 +410,9 @@
       \item The boxes will remain in their original order (they will never overtake each other).
       \item Groups of consecutive boxes map to an interval.
       \item The cost of moving a box from $p$ to $x$ can be modelled as $C_p(x)  = (x-p)^2$.
-      For example moving box 3 to position x gives $C_3(x)=(x-3)^2 = x^2 - 6x +9$
+      For example, moving box 3 to position x gives $C_3(x)=(x-3)^2 = x^2 - 6x +9$
       \item When two boxes overlap from the left group to the right group.
-      For example with 2 boxes, the left most box is at x: $C_{3,3}=C_3(x)+C_3(x+1)= (x-3)^2+(x-2)^2=2x^2-10x+13$.
+      For example, with 2 boxes, the left most box is at x: $C_{3,3}=C_3(x)+C_3(x+1)= (x-3)^2+(x-2)^2=2x^2-10x+13$.
     \end{itemize}
   \end{frame}
   \begin{frame}{Heavy Hauling (2)}
@@ -699,9 +699,10 @@
   \end{frame}
 
 
-  \section{Guest Speaker}
-
-
   \section{Conclussion}
+  \begin{frame}{Thanks for comming}
+    Contest on Saturday, Good luck all!
 
+    Any Questions?
+  \end{frame}
 \end{document}
