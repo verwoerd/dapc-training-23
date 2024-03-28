@@ -22,6 +22,7 @@ jobs:
             session-2.tex
             session-3.tex
             session-4.tex
+            fpc-intro.tex
           latexmk_use_lualatex: true
           latexmk_shell_escape: true
       - name: Release
@@ -33,3 +34,4 @@ jobs:
             session-2.pdf
             session-3.pdf
             session-4.pdf
+            fpc-intro.tex

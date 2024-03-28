@@ -1,22 +1,26 @@
 \begin{tikzpicture}
   \tikzstyle{every node}=[draw]
   \node {International Collegiate Programming Contest World Finals}
-    child {node[red]{NWERC}
-        child { node[red] {BAPC}
-          child {node[red] {DAPC} edge from parent node[left, draw=none]{\textasciitilde 5 best teams}}
-          child {node {AAPP}}
-          child {node {EAPC}}
-          child {node {TAPC}}
-          child {node {$\ldots$}}
-          edge from parent node[left, draw=none]{\textasciitilde3 best teams per university}
-        }
-    child {node{GCPC}}
-    child {node{NCPC}}
-    child {node{UKIEPC}}
-    edge from parent node[left, draw=none] {\textasciitilde3 best teams}
-  }
   child {node {NAC}}
-  child {node{SWERC}}
-  child {node{$\ldots$}};
+  child {node{$\ldots$}}
+    child {node[red]{EUC}} {
+      child {node[red]{NWERC}
+          child { node[red] {BAPC}
+            child {node[red] {DAPC} edge from parent node[left, draw=none]{\textasciitilde 5 best teams}}
+            child {node {AAPP}}
+            child {node {EAPC}}
+            child {node {TAPC}}
+            child {node {$\ldots$}}
+            edge from parent node[left, draw=none]{best teams per university}
+          }
+      child {node{GCPC}}
+      child {node{NCPC}}
+      child {node{UKIEPC}}
+      edge from parent node[left, draw=none] {13 best teams}
+    }
+    child {node{CERC}}
+    child {node{SWERC}}
+    child {node{SEERC}}
+  };
 
 \end{tikzpicture}
