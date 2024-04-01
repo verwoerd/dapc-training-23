@@ -101,11 +101,13 @@
       \item Official preliminary for International Collegiate Programming Contest (ICPC)
       \item Increased difficulty in every contest
     \end{itemize}
-    \end{frame}
+  \end{frame}
   \begin{frame}{Road to the world finals}
     The DAPC is an official preliminary of the ICPC.
     \input{icpc-structure.tikz}
   \end{frame}
+
+
   \section{Reading a problem}
   \begin{frame}{Problem structure}
     A typical problem has the following structure
@@ -275,6 +277,8 @@
 
     \textbf{Warning}: This is not guaranteed to be always the case!
   \end{frame}
+
+
   \section{Tips, tricks and common mistakes}
   \begin{frame}{General tips}
     \begin{itemize}
@@ -361,6 +365,8 @@
       \item Several books available, listed on \url{https://chipcie.wisv.ch/resources}
     \end{itemize}
   \end{frame}
+
+
   \section{FPC 2023 problems}\label{sec:fpc-2023-problems}
   \begin{frame}{Admiring Droplets}
     \begin{itemize}
@@ -376,6 +382,19 @@
     \doclicenseImage
 
   \end{frame}
+  \begin{frame}{Admiring Droplets}
+    \begin{itemize}
+      \item<1-> \textbf{Observation:} $n \leq 10^5$, so we are looking for a $\mathcal{O}(n)$ solution
+      \item<2-> Simulate the droplets from highest to lowest
+      \item<3-> For the current droplet, calculate the time to reach the closest droplet
+      \item<4-> Merge the droplets together and calculate the new size
+      \item<4-> Repeat until a single droplet is left and print the sum of the time
+      \item<4-> \textbf{Pitfall:} \begin{itemize}
+                                    \item Be careful with unit conversion: $1m = 1000mm$, $1 m^3=10^{9}mm^3$
+                                    \item Off by one errors
+      \end{itemize}
+    \end{itemize}
+  \end{frame}
   \begin{frame}{Beaking Spackwards}
     \begin{itemize}
       \item FPC 2023
@@ -388,6 +407,19 @@
     \doclicenseImage
 
   \end{frame}
+  \begin{frame}{Beaking Spackwards}
+    \begin{itemize}
+      \item<1-> \textbf{Observation:} $n \leq 10^9$, so we are looking for a solution faster $\mathcal{O}(n)$
+      \item<2-> \textbf{Observation:} a string \texttt{"aaa...aaa"} of size $l$ has $\frac{l(l+1)}{2}$ palindromes
+      \item<3->  The length of the word should be $\lceil\sqrt{n}\rceil$
+      \item<4-> Find the largest $l$ where $l \leq n$ by search or using the formula $l = \lfloor\frac{\sqrt {8n + 1}-1}{2}\rfloor$\\\[
+                                                                                                                                       \frac{l(l+1)}{2}\leq n \equiv l^2+l \leq 2n \equiv l^2+l-2n \leq 0 \equiv l \leq \frac{-1 + \sqrt {1+4\cdot 2n}}{2}\]
+      \item<5-> Generate a string of length $l$ with the same letter that is unused
+      \item<5-> or append a non palindrome letter to increase the number of palindromes is the desired size
+      \item<5-> Update $n$ with the remaining length and repeat until $n=0$ and print the string
+      \item<6-> \textbf{Pitfall:} Be careful with slow string concatenations
+    \end{itemize}
+  \end{frame}
   \begin{frame}{Catchy Tunes}
     \begin{itemize}
       \item FPC 2023
@@ -399,6 +431,15 @@
 
     \doclicenseImage
 
+  \end{frame}
+  \begin{frame}{Beaking Spackwards}
+    \begin{itemize}
+      \item<1-> \textbf{Observation:} $n \leq 10^5$, so we are looking for a $\mathcal{O}(n)$ solutions
+      \item<1-> At least half of the songs in her playlist are from a unique artist
+      \item<2-> Group the songs in two lists during input if the artist is unique or not
+      \item<3-> Alternate printing a song title from either list and remove it
+      \item<3-> If one list is empty, keep printing from the other list
+    \end{itemize}
   \end{frame}
   \begin{frame}{Dungeon of Darkness}
     \begin{itemize}
@@ -470,6 +511,15 @@
       \item \textbf{Right}:\\\texttt{\textasciitilde/code/\textdollar{} python3 testing\_tool.py -f 1.in java ProblemA}
     \end{itemize}
   \end{frame}
+  \begin{frame}{Dungeon of Darkness}
+    \begin{itemize}
+      \item<1-> Get to the final room in a dungeon, where you only see the symbols of the doors leading from the current room.
+      \item<2-> Use a Depth First Search (DFS) to delve deeper in the maze
+      \item<3-> If the exit is in the room, go through to the exit
+      \item<3-> If in a room, the exit is not there, move through a door you haven't visited yet
+      \item<3-> If all doors are visited, move back to the door you entered the room through
+    \end{itemize}
+  \end{frame}
   \begin{frame}{Expected eyes}
     \begin{itemize}
       \item FPC 2023
@@ -481,6 +531,19 @@
 
     \doclicenseImage
 
+  \end{frame}
+  \begin{frame}{Expected eyes}
+    \begin{itemize}
+      \item<1-> \textbf{Observation:} $n\cdot x \leq 64$, so we are looking for a solution faster then $\mathcal{O}(2^n)$
+      \item<1-> \textbf{Observation:} High time limit signals brute force might be possible
+      \item<2-> Calculate all possible throws for the combined dice and sum them up
+      \item<2-> Divide them by the number of possible outcomes
+      \item<2-> Complexity $\mathcal{O}(x_{max}^n)$ gets accepted due to high time limit
+      \item<3-> The expected value of two independent variables is $E[X+Y] = E[X]+E[Y]$
+      \item<4-> The expected value of a dice $d_k$ with $k$ faces is \\
+      \[E[d_k] = \frac{1}{k}\cdot \sum_{k}^{x=1} x = \frac{1}{k}\cdot\frac{k(k+1)}{2} = \frac{k+1}{2}\]
+      \item<5-> Sum the expected value of each dice gives a complexity of $\mathcal{O}(n)$
+    \end{itemize}
   \end{frame}
   \begin{frame}{Feline Friendship}
     \begin{itemize}
@@ -494,19 +557,19 @@
     \doclicenseImage
 
   \end{frame}
-\begin{frame}{Grid Lock}
-  \begin{itemize}
-    \item FPC 2023
-    \item Time limit: 6s
-    \item Difficulty: Very Hard
-    \item given a grid with arrows, s, remove them one by one.
-    When removing an arrow, it must not point to another arrow in the grid
-  \end{itemize}
-  Original problem written by the FPC 2023 jury and licensed under \doclicenseLongNameRef.
+  \begin{frame}{Grid Lock}
+    \begin{itemize}
+      \item FPC 2023
+      \item Time limit: 6s
+      \item Difficulty: Very Hard
+      \item given a grid with arrows, s, remove them one by one.
+      When removing an arrow, it must not point to another arrow in the grid
+    \end{itemize}
+    Original problem written by the FPC 2023 jury and licensed under \doclicenseLongNameRef.
 
-  \doclicenseImage
+    \doclicenseImage
 
-\end{frame}
+  \end{frame}
   \begin{frame}{Hunting the Mavericks}
     \begin{itemize}
       \item FPC 2023
