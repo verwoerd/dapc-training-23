@@ -368,6 +368,13 @@
 
 
   \section{FPC 2023 problems}\label{sec:fpc-2023-problems}
+  \begin{frame}{FPC 2023 problems}
+    \begin{itemize}
+      \item We go in order through the problems
+      \item Implementations are left to the reader
+      \item Reference solutions can be found in the CHipcie problem archive on \url{https://chipcie.wisv.ch/}
+    \end{itemize}
+  \end{frame}
   \begin{frame}{Admiring Droplets}
     \begin{itemize}
       \item FPC 2023
@@ -375,7 +382,7 @@
       \item Difficulty: Very Easy
       \item Given $n$ droplets on the same vertical line with size $s (\mu L)$ on a window with distance $y$ ($mm$) from the top.
       The velocity is is given by $v = \sqrt[6]{V}$ ($v$ in $m/s$ and $V$ in $m^3$) and when two droplets meet they coalesce together ($V=s_{current}+s_{next}$).
-      Calculate the time takes for the coalesced droplet to reach the bottom of the window using the
+      Calculate the time takes for the coalesced droplet to reach the bottom of the window.
     \end{itemize}
     Original problem written by the FPC 2023 jury and licensed under \doclicenseLongNameRef.
 
@@ -557,18 +564,48 @@
     \doclicenseImage
 
   \end{frame}
+  \begin{frame}{Feline Friendship}
+    \begin{itemize}
+      \item<1-> \textbf{Observation:} $n \leq 2\cdot 10^5$, so we are looking for a $\mathcal{O}(n \log n)$ solution
+      \item<2-> Only a single team needs to be created (Example 1)
+      \item<2-> Since cats have unique preferences, there already teams created following the cycle or preferences
+      \item<3-> if the cycle for a team is $l$ then:\begin{description}
+                                                      \item[$l = k$] no operations are needed for that team
+                                                      \item[$l > k$] A single operation suffice, convincing the $k^{th}$ cat
+                                                      \item[$l < k$] For 2 teams of size $a$ and $b$ can be merged in size $\in [a+1, a+b]$ in a single operation.
+                                                      start with the greatest cycle and merge the next longest cycle, repeat until the size is $\geq k$ and count the merges
+      \end{description}
+      \item<4-> Complexity is $\mathcal{O}(n)$ for finding disjoint cycles
+      \item<4-> Complexity is $\mathcal{O}(n \log n )$ for sorting the cycles by length
+    \end{itemize}
+  \end{frame}
   \begin{frame}{Grid Lock}
     \begin{itemize}
       \item FPC 2023
       \item Time limit: 6s
       \item Difficulty: Very Hard
-      \item given a grid with arrows, s, remove them one by one.
+      \item given a grid with arrows, remove them one by one.
       When removing an arrow, it must not point to another arrow in the grid
     \end{itemize}
     Original problem written by the FPC 2023 jury and licensed under \doclicenseLongNameRef.
 
     \doclicenseImage
 
+  \end{frame}
+  \begin{frame}{Gridlock}
+    \begin{itemize}
+      \item<1-> \textbf{Observation:} This problem has a large output (4000 lines), so not much can be said about the complexity
+      \item<2-> Every tile as a dependency on all its preceding tiles in the direction on the tile.
+      \item<2-> Topological Sort the dependencies is to slow $\mathcal{O}(h\cdot w(h+w))$
+      \item<3-> For every tile, keep track of its neighbours
+      \begin{itemize}
+        \item<4-> Start by removing a tile with no dependencies
+        \item<4-> Update the dependencies of the neighbours by removing the tile and linking to new blocking tiles
+        \item<4-> For every neighbouring tile try to remove tile
+        \item<4-> Repeat until no more tiles can be removed or the board is empty
+      \end{itemize}
+      \item<5-> this approach is $\mathcal{O}(h\cdot w)$
+    \end{itemize}
   \end{frame}
   \begin{frame}{Hunting the Mavericks}
     \begin{itemize}
@@ -581,6 +618,19 @@
 
     \doclicenseImage
 
+  \end{frame}
+  \begin{frame}{Hunting the Mavericks}
+    \begin{itemize}
+      \item<1-> \textbf{Observation:} $n+m=s \leq 2\cdot 10^5$, so we are looking for a $\mathcal{O}(s \log s)$ solution
+      \item<2-> For each level $i$, precalculate \begin{itemize}
+                                                   \item the number of armour upgrades it contains ($c_i$)
+                                                   \item the number of armour that requires a weapon of a later level ($r_i$)
+      \end{itemize}
+      \item<3-> Calculate initial number $x$ of armour you miss if you start on level 1
+      \item<4-> Iterate over each level and calculate the number of missed weapons on level $i$, and update $x = x + r_i - c_i$
+      \item<4-> Then output is the minimum value of $x$ in $\mathcal{O}(n+m)$
+      \item<5-> \textbf{Alternatively:} Use a segment tree to store the ranges in which you miss each armour, resulting in $\mathcal{O}(m\log n)$ and more code
+    \end{itemize}
   \end{frame}
   \begin{frame}{Industry Improvements}
     \begin{itemize}
@@ -596,6 +646,16 @@
     \doclicenseImage
 
   \end{frame}
+  \begin{frame}{Industry Improvements}
+    \begin{itemize}
+      \item<1-> \textbf{Observation:} $n \leq  10^5$, so we are looking for a $\mathcal{O}(n \log^2 n)$ solution
+      \item<2-> Calculating the number of restarts for a machine for a given max weight is trivial, since you have to process the boxes in order
+      \item<3-> If a max weight can process the boxes in less then $k$ runs for capacity $a$, then it will also work for any higher max weight
+      \item<4-> Binary search the solution over the range $[\min(x), \sum x]$
+      \item<4-> Start in the middle, go to the right half is smaller then $k$, else go the left half.
+      \item<5-> This results in a complexity of $\mathcal{O}(n \log \sum x)$
+    \end{itemize}
+  \end{frame}
   \begin{frame}{ Jurassic Park}
     \begin{itemize}
       \item FPC 2023
@@ -608,5 +668,23 @@
 
     \doclicenseImage
 
+  \end{frame}
+  \begin{frame}{Jurasic Park}
+    \begin{itemize}
+      \item<1-> \textbf{Observation:} $n \leq  10^3$, so we are looking for a $\mathcal{O}(n \sqrt {n})$ solution
+      \item<2-> The points are \textbf{Uniform random} divided, so there are no nasty cases where all points are clustered
+      \item<3-> Divide the area in a grid of $\lfloor\sqrt {\frac{n}{3}} \rfloor \times \lfloor\sqrt {\frac{n}{3}} \rfloor$
+      \item<4-> Every square of the grid will have at least 3 points in it
+      \item<4-> But the smallest triangle might be spanning the over the grid lines
+      \item<5-> Calculate the all possible triangles in a by taking $3\times 3$ grid tiles
+      \item<6-> This will calculate the smallest possible triangle in $\mathcal{O}(n)$ time with high probability
+    \end{itemize}
+  \end{frame}
+  \begin{frame}{Final remarks}
+    \begin{itemize}
+      \item Resources for the contest are available on \url{https://chipcie.wisv.ch}
+      \item Reference solutions, input and output for the problems can be found in the problem archive
+      \item Good luck during the contest and have fun
+    \end{itemize}
   \end{frame}
 \end{document}
