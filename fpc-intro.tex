@@ -30,11 +30,11 @@
   \section{Introduction}
   \begin{frame}{Welcome}
     \begin{itemize}
-      \item Welcome to the FPC 2024 Introduction sessions
+      \item Welcome to the FPC 2024 Introduction Session
       \item 2 parts
-      \item First Part gives introduction of programming contests
+      \item First part gives introduction of programming contests
       \item We will discuss all last year's problems of the FPC in the second part
-      \item Problem-set is available on paper, try to read through it in the break
+      \item Problem set is available on paper, try to read through it in the break
     \end{itemize}
   \end{frame}
   \begin{frame}{Who am I}
@@ -74,8 +74,8 @@
         \begin{itemize}
           \item<4-> Penalty time is counts only if the problem is solved afterward.
           \item<4-> Penalty time does not reduce your contest time.
-          \item<4-> Penalty time is not added after wrong attempts after the problem is solved.
-          \item<4-> No penalty for compiler errors.
+          \item<4-> Penalty time is not added for wrong attempts after the problem is solved.
+          \item<4-> No penalty for compile errors.
         \end{itemize}
       \end{itemize}
     \end{itemize}
@@ -92,12 +92,12 @@
     \begin{itemize}
       \item Contest of 3 hours
       \item Simpler problems
-      \item preparation for the Delft Algorithm Programming Contest (DAPC)
+      \item Preparation for the Delft Algorithm Programming Contest (DAPC)
     \end{itemize}
   \end{frame}
   \begin{frame}{Delft Algorithm Programming Contest (DAPC)}
     \begin{itemize}
-      \item Contest is 5 hours instead of 3
+      \item Contest is 5 hours instead of 3 hours
       \item Official preliminary for International Collegiate Programming Contest (ICPC)
       \item Increased difficulty in every contest
     \end{itemize}
@@ -180,40 +180,40 @@
   \end{frame}
 
 
-  \section{Introduction to DOMJudge}
+  \section{Introduction to DOMjudge}
   \begin{frame}{Submitting the Solution}
     \begin{itemize}
       \item During the contest you submit to a contest control system
       \begin{itemize}
-        \item Usually DOMJudge, but sometimes Kattis or PC\textasciicircum2
+        \item Usually DOMjudge, but sometimes Kattis or PC\textasciicircum2
       \end{itemize}
       \item Submit solutions
       \item Ask questions about the problems or programming environment
       \item Read clarifications from the jury
     \end{itemize}
   \end{frame}
-  \begin{frame}{Domjudge Interface - home}
+  \begin{frame}{DOMjudge Interface - home}
     \includegraphics[width=\linewidth]{images/session-1/domjudge-initial}
   \end{frame}
-  \begin{frame}{Domjudge Interface - problems}
+  \begin{frame}{DOMjudge Interface - problems}
     \includegraphics[width=\linewidth]{images/session-1/domjudge-problems}
   \end{frame}
-  \begin{frame}{Domjudge Interface - submit}
+  \begin{frame}{DOMjudge Interface - submit}
     \includegraphics[width=\linewidth]{images/session-1/domjudge-submit}
   \end{frame}
   \begin{frame}{Are the solutions correct?}
     \includegraphics[width=\linewidth]{images/session-1/domjudge-submit-first-try}
   \end{frame}
-  \begin{frame}{We made a whoopsy?}
+  \begin{frame}{We made a whoopsie?}
     \includegraphics[width=\linewidth]{images/session-1/domjudge-no-double}
   \end{frame}
   \begin{frame}{Or not}
     \includegraphics[width=\linewidth]{images/session-1/domjudge-correct}
   \end{frame}
-  \begin{frame}{Lets ask the jury}
+  \begin{frame}{Let's ask the jury}
     \includegraphics[width=\linewidth]{images/session-1/domjudge-clar-1}
   \end{frame}
-  \begin{frame}{Lets hope they respond fast}
+  \begin{frame}{Let's hope they respond fast}
     \includegraphics[width=\linewidth]{images/session-1/domjudge-clar-2}
   \end{frame}
   \begin{frame}{We have a response}
@@ -224,7 +224,7 @@
   \end{frame}
   \begin{frame}{Why did the 3 solutions fail?}
     \begin{itemize}
-      \item <1-> Lets check the input again: $|a|,|b| \leq 10^6$
+      \item <1-> Let's check the input again: $|a|,|b| \leq 10^6$
       \item <2-> Worst case scenario: $a=10^6$ and $b=10^6$ giving  $a \times b = 10^{12}$
       \item <3-> Does $10^{12}$ fit in a 32-bit \texttt{int}?
       \item <4-> $\log_2 10^{12} \approx 40$, so \textbf{NO}, 40 bits don't fit in an \texttt{int}
@@ -283,12 +283,12 @@
   \begin{frame}{General tips}
     \begin{itemize}
       \item Read the output specification carefully!
-      \item Don’t forget to remove debug prints!
+      \item Don't forget to remove debug prints!
       \item When integers get large, use 64-bit!
       \item Do not do string concatenation with $+$ in a loop!
       \item Calling functions is more expensive than you might think!
       \item For Java, \texttt{BufferedReader} is faster than \texttt{Scanner}!
-      \item Don’t forget to eat and drink.
+      \item Don't forget to eat and drink.
       Programming contest is a sport, and you need to be energized and focussed for the whole contest.
     \end{itemize}
   \end{frame}
@@ -309,7 +309,7 @@
       \item After a few minutes of contest, the first balloons will be handed out
       \item Check the scoreboard or balloon colours to see which problem is solved most\\
       \includegraphics[width=\linewidth]{images/session-2/bottom-scoreboard}
-      \item Or the problems page in DOMJudge (only newer versions)
+      \item Or the problems page in DOMjudge (only newer versions)
       \item \textbf{Warning}: The first problem solved is not guaranteed the easiest!
     \end{itemize}
   \end{frame}
@@ -331,12 +331,12 @@
         \item Check for corner cases, don't forget zero
         \item Check correctness of algorithm
       \end{itemize}
-      \item \textbf{Warning}: A problem can be WA and TLE at the same time, but only \emph{one} is reported back!
+      \item \textbf{Warning}: A problem can be RTE and TLE and WA at the same time, but only \emph{one} is reported back!
     \end{itemize}
   \end{frame}
   \begin{frame}{Common Battle Plan}
     \begin{description}
-      \item [Start of contest] Prepare computer, find and solve easiest problems, all problems should be read by at least a single team member.
+      \item[Start of contest] Prepare computer, find and solve easiest problems, all problems should be read by at least a single team member.
       \item[First hours] Prioritize solving the easiest problems, every team member works on their own problems
       \item[Mid contest] Work on solving harder problems with 2 people, while the last person works alone on the last easy or specialized hard problems
       \item[End of the contest] Work together with the whole team on a single problem, free submit mode
@@ -344,7 +344,7 @@
   \end{frame}
   \begin{frame}{Common Errors}
     \begin{itemize}
-      \item Focus on the first problem you think you can solve
+      \item Focusing on the first problem you think you can solve
       \item Not reading all problems in the set
       \item Debugging on the computer while another solution can be implemented
       \item Fighting who can solve which problem
@@ -357,8 +357,8 @@
       \item If you want to try to make it to the World Finals, you can train for next year's DAPC
       \item Many online problem-solving websites:
       \begin{itemize}
-        \item December: Advent of code (\url{https://adventofcode.com/})
-        \item September-Januari: Universal Cup (\url{https://ucup.ac})
+        \item December: Advent of Code (\url{https://adventofcode.com/})
+        \item September--January: Universal Cup (\url{https://ucup.ac})
         \item Year round: Kattis Problem Archive (\url{https://open.kattis.com/})
         \item Year round: Codeforces (\url{https://codeforces.com/})
       \end{itemize}
@@ -370,9 +370,9 @@
   \section{FPC 2023 problems}\label{sec:fpc-2023-problems}
   \begin{frame}{FPC 2023 problems}
     \begin{itemize}
-      \item We go in order through the problems
+      \item We go through the problems in alphabetical order
       \item Implementations are left to the reader
-      \item Reference solutions can be found in the CHipcie problem archive on \url{https://chipcie.wisv.ch/}
+      \item Reference solutions can be found in the CHipCie problem archive at \url{https://chipcie.wisv.ch/archive}
     \end{itemize}
   \end{frame}
   \begin{frame}{Admiring Droplets}
@@ -380,11 +380,11 @@
       \item FPC 2023
       \item Time limit: 3s
       \item Difficulty: Very Easy
-      \item Given $n$ droplets on the same vertical line with size $s (\mu L)$ on a window with distance $y$ ($mm$) from the top.
+      \item Given $n$ droplets on the same vertical line with size $s$ ($\mu L$) on a window with distance $y$ ($mm$) from the top.
       The velocity is is given by $v = \sqrt[6]{V}$ ($v$ in $m/s$ and $V$ in $m^3$) and when two droplets meet they coalesce together ($V=s_{current}+s_{next}$).
       Calculate the time takes for the coalesced droplet to reach the bottom of the window.
     \end{itemize}
-    Original problem written by the FPC 2023 jury and licensed under \doclicenseLongNameRef.
+    Original problem written by the FPC 2023 Jury and licensed under \doclicenseLongNameRef.
 
     \doclicenseImage
 
@@ -397,7 +397,7 @@
       \item<4-> Merge the droplets together and calculate the new size
       \item<4-> Repeat until a single droplet is left and print the sum of the time
       \item<4-> \textbf{Pitfall:} \begin{itemize}
-                                    \item Be careful with unit conversion: $1m = 1000mm$, $1 m^3=10^{9}mm^3$
+                                    \item Be careful with unit conversion: $1\,m = 1000\,mm$, $1\,m^3=10^{9}\,mm^3$
                                     \item Off by one errors
       \end{itemize}
     \end{itemize}
@@ -409,7 +409,7 @@
       \item Difficulty: Easy
       \item Given a input $s$, print a string containing exactly $s$ palindromes
     \end{itemize}
-    Original problem written by the FPC 2023 jury and licensed under \doclicenseLongNameRef.
+    Original problem written by the FPC 2023 Jury and licensed under \doclicenseLongNameRef.
 
     \doclicenseImage
 
@@ -418,7 +418,7 @@
     \begin{itemize}
       \item<1-> \textbf{Observation:} $n \leq 10^9$, so we are looking for a solution faster $\mathcal{O}(n)$
       \item<2-> \textbf{Observation:} a string \texttt{"aaa...aaa"} of size $l$ has $\frac{l(l+1)}{2}$ palindromes
-      \item<3->  The length of the word should be $\lceil\sqrt{n}\rceil$
+      \item<3-> The length of the word should be $\lceil\sqrt{n}\rceil$
       \item<4-> Find the largest $l$ where $l \leq n$ by search or using the formula $l = \lfloor\frac{\sqrt {8n + 1}-1}{2}\rfloor$\\\[
                                                                                                                                        \frac{l(l+1)}{2}\leq n \equiv l^2+l \leq 2n \equiv l^2+l-2n \leq 0 \equiv l \leq \frac{-1 + \sqrt {1+4\cdot 2n}}{2}\]
       \item<5-> Generate a string of length $l$ with the same letter that is unused
@@ -434,15 +434,15 @@
       \item Difficulty: Medium
       \item Given a list on $n$ songs with their artist, generate an ordering where every song is followed with a song from a different artist.
     \end{itemize}
-    Original problem written by the FPC 2023 jury and licensed under \doclicenseLongNameRef.
+    Original problem written by the FPC 2023 Jury and licensed under \doclicenseLongNameRef.
 
     \doclicenseImage
 
   \end{frame}
-  \begin{frame}{Beaking Spackwards}
+  \begin{frame}{Catchy Tunes}
     \begin{itemize}
-      \item<1-> \textbf{Observation:} $n \leq 10^5$, so we are looking for a $\mathcal{O}(n)$ solutions
-      \item<1-> At least half of the songs in her playlist are from a unique artist
+      \item<1-> \textbf{Observation:} $n \leq 10^5$, so we are looking for a $\mathcal{O}(n)$ solution
+      \item<1-> At least half of the songs in the playlist are from a unique artist
       \item<2-> Group the songs in two lists during input if the artist is unique or not
       \item<3-> Alternate printing a song title from either list and remove it
       \item<3-> If one list is empty, keep printing from the other list
@@ -456,7 +456,7 @@
       \item \textbf{Interactive Problem}
       \item Using interactions, navigate a maze and find the exit.
     \end{itemize}
-    Original problem written by the FPC 2023 jury and licensed under \doclicenseLongNameRef.
+    Original problem written by the FPC 2023 Jury and licensed under \doclicenseLongNameRef.
 
     \doclicenseImage
 
@@ -479,8 +479,8 @@
       \item Double interaction problem (very, very rare)
       \begin{itemize}
         \item Program has 2 modes
-        \item the first mode, input transforms input to output following certain rules
-        \item The second mode, the output of mode 1 is given and you have tranform it back to the input of mode 1
+        \item The first mode, input transforms input to output following certain rules
+        \item The second mode, the output of mode 1 is given and you have transform it back to the input of mode 1
       \end{itemize}
     \end{itemize}
   \end{frame}
@@ -494,7 +494,7 @@
       \item Verdict of a solution is not deterministic, but the following is guaranteed:
       \begin{itemize}
         \item Wrong Answer means you printed something wrong
-        \item Runtime Error means you returned an 0 error code
+        \item Runtime Error means you returned a non-zero exit code
         \item If both occur, you will get either
       \end{itemize}
       \item ICPC style contests don't have ``Idleness Limit Exceeded'', but a total runtime limit.
@@ -502,9 +502,9 @@
   \end{frame}
   \begin{frame}{Flushing the output}
     \begin{description}
-      \item [C++]: end your output with \mintinline{c++}|std::endl| or \mintinline{c++}|std::flush|
-      \item[Python]: use the flush parameter, like \mintinline{python}|print("abc", flush=True)|
-      \item[Java/Kotlin]: use a \mintinline{java}|java.io.BufferedWriter| and after each write use the \mintinline{java}|.flush()| method.
+      \item[C++:] end your output with \mintinline{c++}|std::endl| or \mintinline{c++}|std::flush|
+      \item[Python:] use the flush parameter, like \mintinline{python}|print("abc", flush=True)|
+      \item[Java/Kotlin:] use a \mintinline{java}|java.io.BufferedWriter| and after each write use the \mintinline{java}|.flush()| method.
     \end{description}
   \end{frame}
   \begin{frame}{Interactive problems testing tool}
@@ -520,28 +520,28 @@
   \end{frame}
   \begin{frame}{Dungeon of Darkness}
     \begin{itemize}
-      \item<1-> Get to the final room in a dungeon, where you only see the symbols of the doors leading from the current room.
+      \item<1-> Get to the final room in a dungeon, where you only see the symbols of the doors leading from the current room
       \item<2-> Use a Depth First Search (DFS) to delve deeper in the maze
       \item<3-> If the exit is in the room, go through to the exit
       \item<3-> If in a room, the exit is not there, move through a door you haven't visited yet
       \item<3-> If all doors are visited, move back to the door you entered the room through
     \end{itemize}
   \end{frame}
-  \begin{frame}{Expected eyes}
+  \begin{frame}{Expected Eyes}
     \begin{itemize}
       \item FPC 2023
       \item Time limit: 4s
       \item Difficulty: Very Easy
-      \item given $n$ dices with $x$ faces, calculate the expected value of throwing all dice at once.
+      \item Given $n$ dices with $x$ faces, calculate the expected value of throwing all dice at once.
     \end{itemize}
-    Original problem written by the FPC 2023 jury and licensed under \doclicenseLongNameRef.
+    Original problem written by the FPC 2023 Jury and licensed under \doclicenseLongNameRef.
 
     \doclicenseImage
 
   \end{frame}
-  \begin{frame}{Expected eyes}
+  \begin{frame}{Expected Eyes}
     \begin{itemize}
-      \item<1-> \textbf{Observation:} $n\cdot x \leq 64$, so we are looking for a solution faster then $\mathcal{O}(2^n)$
+      \item<1-> \textbf{Observation:} $n\cdot x \leq 64$, so we are looking for a solution faster than $\mathcal{O}(2^n)$
       \item<1-> \textbf{Observation:} High time limit signals brute force might be possible
       \item<2-> Calculate all possible throws for the combined dice and sum them up
       \item<2-> Divide them by the number of possible outcomes
@@ -557,9 +557,9 @@
       \item FPC 2023
       \item Time limit: 2s
       \item Difficulty: Hard
-      \item given $n$ cats and there preferred team partner, create teams of $k$ and calculate the minimal number of cats you have to convince to not be in the team with their favourite player.
+      \item Given $n$ cats and there preferred team partner, create teams of $k$ and calculate the minimal number of cats you have to convince to not be in the team with their favourite player.
     \end{itemize}
-    Original problem written by the FPC 2023 jury and licensed under \doclicenseLongNameRef.
+    Original problem written by the FPC 2023 Jury and licensed under \doclicenseLongNameRef.
 
     \doclicenseImage
 
@@ -570,7 +570,7 @@
       \item<2-> Only a single team needs to be created (Example 1)
       \item<2-> Since cats have unique preferences, there already teams created following the cycle or preferences
       \item<3-> if the cycle for a team is $l$ then:\begin{description}
-                                                      \item[$l = k$] no operations are needed for that team
+                                                      \item[$l = k$] No operations are needed for that team
                                                       \item[$l > k$] A single operation suffice, convincing the $k^{th}$ cat
                                                       \item[$l < k$] For 2 teams of size $a$ and $b$ can be merged in size $\in [a+1, a+b]$ in a single operation.
                                                       start with the greatest cycle and merge the next longest cycle, repeat until the size is $\geq k$ and count the merges
@@ -584,10 +584,10 @@
       \item FPC 2023
       \item Time limit: 6s
       \item Difficulty: Very Hard
-      \item given a grid with arrows, remove them one by one.
+      \item Given a grid with arrows, remove them one by one.
       When removing an arrow, it must not point to another arrow in the grid
     \end{itemize}
-    Original problem written by the FPC 2023 jury and licensed under \doclicenseLongNameRef.
+    Original problem written by the FPC 2023 Jury and licensed under \doclicenseLongNameRef.
 
     \doclicenseImage
 
@@ -595,8 +595,8 @@
   \begin{frame}{Gridlock}
     \begin{itemize}
       \item<1-> \textbf{Observation:} This problem has a large output (4000 lines), so not much can be said about the complexity
-      \item<2-> Every tile as a dependency on all its preceding tiles in the direction on the tile.
-      \item<2-> Topological Sort the dependencies is to slow $\mathcal{O}(h\cdot w(h+w))$
+      \item<2-> Every tile has a dependency on all its preceding tiles in the direction on the tile.
+      \item<2-> Topological Sort the dependencies is too slow $\mathcal{O}(h\cdot w(h+w))$
       \item<3-> For every tile, keep track of its neighbours
       \begin{itemize}
         \item<4-> Start by removing a tile with no dependencies
@@ -604,7 +604,7 @@
         \item<4-> For every neighbouring tile try to remove tile
         \item<4-> Repeat until no more tiles can be removed or the board is empty
       \end{itemize}
-      \item<5-> this approach is $\mathcal{O}(h\cdot w)$
+      \item<5-> This approach is $\mathcal{O}(h\cdot w)$
     \end{itemize}
   \end{frame}
   \begin{frame}{Hunting the Mavericks}
@@ -612,9 +612,9 @@
       \item FPC 2023
       \item Time limit: 3s
       \item Difficulty: Medium
-      \item Determine in which level to start your play-through, so that you miss the least armour upgrades
+      \item Determine in which level to start your playthrough, so that you miss the least armour upgrades
     \end{itemize}
-    Original problem written by the FPC 2023 jury and licensed under \doclicenseLongNameRef.
+    Original problem written by the FPC 2023 Jury and licensed under \doclicenseLongNameRef.
 
     \doclicenseImage
 
@@ -641,7 +641,7 @@
       determine the minimum summed weight that the machine needs to handle in one run.
 
     \end{itemize}
-    Original problem written by the FPC 2023 jury and licensed under \doclicenseLongNameRef.
+    Original problem written by the FPC 2023 Jury and licensed under \doclicenseLongNameRef.
 
     \doclicenseImage
 
@@ -661,18 +661,18 @@
       \item FPC 2023
       \item Time limit: 3s
       \item Difficulty: Very hard
-      \item m: Given a set of uniform random points in a square, find the smallest perimeter among all triangles.
+      \item Given a set of uniform random points in a square, find the smallest perimeter among all triangles.
 
     \end{itemize}
-    Original problem written by the FPC 2023 jury and licensed under \doclicenseLongNameRef.
+    Original problem written by the FPC 2023 Jury and licensed under \doclicenseLongNameRef.
 
     \doclicenseImage
 
   \end{frame}
-  \begin{frame}{Jurasic Park}
+  \begin{frame}{Jurassic Park}
     \begin{itemize}
       \item<1-> \textbf{Observation:} $n \leq  10^3$, so we are looking for a $\mathcal{O}(n \sqrt {n})$ solution
-      \item<2-> The points are \textbf{Uniform random} divided, so there are no nasty cases where all points are clustered
+      \item<2-> The points are \textbf{uniform randomly} divided, so there are no nasty cases where all points are clustered
       \item<3-> Divide the area in a grid of $\lfloor\sqrt {\frac{n}{3}} \rfloor \times \lfloor\sqrt {\frac{n}{3}} \rfloor$
       \item<4-> Every square of the grid will have at least 3 points in it
       \item<4-> But the smallest triangle might be spanning the over the grid lines
