@@ -15,6 +15,7 @@
   version={4.0},
 ]{doclicense}
 \usepackage{hyperref}
+\usepackage{blkarray}
 %\setsansfont{Fira Sans}
 \usemintedstyle{manni}
 \setminted{
@@ -292,6 +293,37 @@
       Programming contest is a sport, and you need to be energized and focussed for the whole contest.
     \end{itemize}
   \end{frame}
+  \begin{frame}{General Tactics}
+    \begin{itemize}
+      \item Know each other's strengths and weaknesses like:
+      \begin{itemize}
+        \item types of problems (math, geometry, search, strings, graphs, etc.)
+        \item debugging skills
+        \item coding speed and accuracy
+      \end{itemize}
+      \item Parallelize
+      \item Work on paper (e.g.\ pseudocode or flow diagrams)
+      \item Debug on paper
+      \item Use rubber duck debugging when stuck
+    \end{itemize}
+  \end{frame}
+  \begin{frame}{Team Tactics}
+    \begin{itemize}
+      \item<1-> Plot of the contest: 3 contestants, 1 computer
+      \item<2-> Several tactics how to divide the computer efficiently
+      \item<3-> Shuffle Tactic\begin{itemize}
+                                \item<4-> Rotate around who sits behind the pc
+                                \item<4-> After submitting a problem, switch around if someone has a solution
+                                \item<4-> Useful when programming in different languages
+      \end{itemize}
+      \item<3-> Designated Tactic\begin{itemize}
+                                   \item<5->Dedicated person behind computer
+                                   \item<5-> Other team members work on paper or read along on screen
+                                   \item<5-> Useful for teams with different disciplines
+      \end{itemize}
+      \item<3-> No best solution: Pick and mix what works best for your team
+    \end{itemize}
+  \end{frame}
 
   \begin{frame}{Selecting the first problem}
     \begin{itemize}
@@ -316,17 +348,17 @@
   \begin{frame}{My problem is wrong, what now}
     Print out the problem and let other people work on the computer, work out cases that might go wrong.
     \begin{itemize}
-      \item When the result is RTE:
+      \item When the result is Run Time Error (RTE):
       \begin{itemize}
         \item Check for possible null pointers, array overflows, or integer overflow
         \item Check the input specification, don't forget 0 can do unexpected things
       \end{itemize}
-      \item When the result is TLE:
+      \item When the result is Time Limit Exceeded (TLE):
       \begin{itemize}
         \item Check stop conditions, maybe an infinite loop?
         \item Code is too slow, try optimizing or thinking of a faster solution
       \end{itemize}
-      \item When then result is WA:
+      \item When then result is Wrong Answer (WA):
       \begin{itemize}
         \item Check for corner cases, don't forget zero
         \item Check correctness of algorithm
@@ -476,12 +508,7 @@
       \item Search in a finite space
       \item Explore a maze
       \item Matching games
-      \item Double interaction problem (very, very rare)
-      \begin{itemize}
-        \item Program has 2 modes
-        \item The first mode, input transforms input to output following certain rules
-        \item The second mode, the output of mode 1 is given and you have transform it back to the input of mode 1
-      \end{itemize}
+      \item Decision problems
     \end{itemize}
   \end{frame}
   \begin{frame}{Common pitfalls for Interactive problems}
